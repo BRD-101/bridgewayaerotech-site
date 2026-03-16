@@ -1,0 +1,2010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bridgeway Aero Tech | Independent Aviation Advisory &amp; Asset Management</title>
+<meta name="description" content="Bridgeway Aero Tech provides independent, technically rigorous aviation advisory and asset management services that protect capital, reduce transactional risk, and maximize the value of aviation assets throughout their lifecycle.">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Barlow+Condensed:ital,wght@0,300;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
+<style>
+
+/* ─────────────────────────────────────────
+   RESET & ROOT
+───────────────────────────────────────── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: smooth; }
+
+:root {
+  --charcoal:   #1E2730;
+  --charcoal-2: #28333F;
+  --blue:       #0B5EA8;
+  --blue-lt:    #1A7ACC;
+  --blue-dim:   rgba(11,94,168,.08);
+  --white:      #FFFFFF;
+  --off-white:  #F5F7F9;
+  --rule:       rgba(30,39,48,.1);
+  --rule-lt:    rgba(255,255,255,.1);
+  --muted:      #546070;
+  --muted-lt:   rgba(255,255,255,.5);
+  --cond:       'Barlow Condensed', sans-serif;
+  --body:       'Barlow', sans-serif;
+  --gutter:     clamp(1.5rem, 5vw, 5rem);
+  --max:        1200px;
+}
+
+body {
+  font-family: var(--body);
+  color: var(--charcoal);
+  background: var(--white);
+  overflow-x: hidden;
+}
+
+img { display: block; max-width: 100%; }
+a { text-decoration: none; color: inherit; }
+
+
+/* ─────────────────────────────────────────
+   UTILITY
+───────────────────────────────────────── */
+.container {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.section-eyebrow {
+  font-family: var(--cond);
+  font-size: .7rem;
+  font-weight: 500;
+  letter-spacing: .26em;
+  text-transform: uppercase;
+  color: var(--blue-lt);
+  margin-bottom: .85rem;
+}
+
+.section-title {
+  font-family: var(--cond);
+  font-size: clamp(1.9rem, 3.2vw, 2.8rem);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .02em;
+  color: var(--charcoal);
+  line-height: 1.05;
+}
+
+.section-title-light {
+  color: var(--white);
+}
+
+.section-body {
+  font-size: .97rem;
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--muted);
+  max-width: 580px;
+}
+
+.section-body-light {
+  color: rgba(255,255,255,.6);
+}
+
+/* blue left-border accent used throughout */
+.blue-rule {
+  display: block;
+  width: 36px;
+  height: 3px;
+  background: var(--blue);
+  margin-bottom: 1.75rem;
+}
+
+/* fade-in on scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity .65s ease, transform .65s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+.reveal-delay-1 { transition-delay: .1s; }
+.reveal-delay-2 { transition-delay: .2s; }
+.reveal-delay-3 { transition-delay: .3s; }
+.reveal-delay-4 { transition-delay: .4s; }
+
+
+/* ─────────────────────────────────────────
+   NAVIGATION
+───────────────────────────────────────── */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: var(--charcoal);
+  border-bottom: 1px solid rgba(255,255,255,.07);
+  transition: box-shadow .3s;
+}
+
+.nav.scrolled {
+  box-shadow: 0 2px 24px rgba(0,0,0,.35);
+}
+
+.nav-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+/* Logo */
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  flex-shrink: 0;
+}
+
+.nav-logo-mark {
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+}
+
+.nav-wordmark {
+  font-family: var(--cond);
+  font-size: .88rem;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--white);
+  line-height: 1.25;
+}
+
+.nav-wordmark span {
+  display: block;
+  font-weight: 300;
+  font-size: .6rem;
+  letter-spacing: .18em;
+  color: rgba(255,255,255,.38);
+}
+
+/* Desktop links */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: var(--body);
+  font-size: .82rem;
+  font-weight: 400;
+  color: rgba(255,255,255,.58);
+  letter-spacing: .02em;
+  transition: color .2s;
+}
+
+.nav-links a:hover { color: var(--white); }
+
+/* aeroAI CTA */
+.nav-portal {
+  font-family: var(--cond);
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--white);
+  background: var(--blue);
+  padding: .55rem 1.25rem;
+  border: 1px solid var(--blue);
+  white-space: nowrap;
+  transition: background .2s;
+}
+
+.nav-portal:hover { background: var(--blue-lt); border-color: var(--blue-lt); }
+
+/* Mobile hamburger */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: rgba(255,255,255,.7);
+  transition: all .3s;
+}
+
+/* Mobile menu */
+.nav-mobile {
+  display: none;
+  background: var(--charcoal-2);
+  border-top: 1px solid rgba(255,255,255,.07);
+}
+
+.nav-mobile.open { display: block; }
+
+.nav-mobile ul {
+  list-style: none;
+  padding: 1rem var(--gutter);
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+}
+
+.nav-mobile ul a {
+  display: block;
+  font-size: .9rem;
+  color: rgba(255,255,255,.65);
+  padding: .65rem 0;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  transition: color .2s;
+}
+
+.nav-mobile ul a:hover { color: var(--white); }
+
+.nav-mobile .nav-portal-mobile {
+  display: block;
+  margin: 1rem var(--gutter) 1.25rem;
+  text-align: center;
+  font-family: var(--cond);
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--white);
+  background: var(--blue);
+  padding: .75rem;
+}
+
+
+/* ─────────────────────────────────────────
+   HERO
+───────────────────────────────────────── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-end;
+  background: var(--charcoal);
+  overflow: hidden;
+  padding-top: 68px; /* nav offset */
+}
+
+/* Placeholder background — swap for client photo */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: var(--charcoal-2);
+  /* When photo is supplied, replace with:
+     background: url('your-photo.jpg') center/cover no-repeat;
+     opacity: .35;  */
+}
+
+/* Subtle engineering grid */
+.hero-grid-lines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+  background-size: 52px 52px;
+}
+
+/* Blue vertical accent */
+.hero-accent-bar {
+  position: absolute;
+  left: var(--gutter);
+  top: 0; bottom: 0;
+  width: 3px;
+  background: var(--blue);
+}
+
+/* Diagonal photo placeholder */
+.hero-photo-placeholder {
+  position: absolute;
+  top: 0; right: 0;
+  width: 46%;
+  height: 100%;
+  background: linear-gradient(160deg, #2a3a4a 0%, #1a2530 100%);
+  clip-path: polygon(8% 0%, 100% 0%, 100% 100%, 0% 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-photo-placeholder-label {
+  font-family: var(--cond);
+  font-size: .65rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.2);
+  text-align: center;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 5rem var(--gutter) 5rem calc(var(--gutter) + 1.5rem);
+  max-width: 680px;
+}
+
+.hero-eyebrow {
+  font-family: var(--cond);
+  font-size: .72rem;
+  font-weight: 500;
+  letter-spacing: .26em;
+  text-transform: uppercase;
+  color: var(--blue-lt);
+  margin-bottom: 1.5rem;
+}
+
+.hero-headline {
+  font-family: var(--cond);
+  font-size: clamp(2.8rem, 5.5vw, 5.2rem);
+  font-weight: 700;
+  line-height: 1.0;
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: .01em;
+  margin-bottom: 1.75rem;
+}
+
+.hero-headline .italic-line {
+  display: block;
+  font-family: var(--body);
+  font-weight: 300;
+  font-style: italic;
+  font-size: 72%;
+  text-transform: none;
+  letter-spacing: 0;
+  color: rgba(255,255,255,.72);
+  line-height: 1.4;
+}
+
+.hero-body {
+  font-size: 1.05rem;
+  font-weight: 300;
+  line-height: 1.8;
+  color: rgba(255,255,255,.6);
+  max-width: 500px;
+  margin-bottom: 2.5rem;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 4rem;
+}
+
+.btn-primary {
+  font-family: var(--cond);
+  font-size: .8rem;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--white);
+  background: var(--blue);
+  padding: .9rem 2.25rem;
+  border: 1px solid var(--blue);
+  cursor: pointer;
+  transition: background .2s, border-color .2s;
+  display: inline-block;
+}
+
+.btn-primary:hover { background: var(--blue-lt); border-color: var(--blue-lt); }
+
+.btn-ghost {
+  font-family: var(--cond);
+  font-size: .8rem;
+  font-weight: 500;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.7);
+  background: transparent;
+  padding: .9rem 2.25rem;
+  border: 1px solid rgba(255,255,255,.22);
+  cursor: pointer;
+  transition: border-color .2s, color .2s;
+  display: inline-block;
+}
+
+.btn-ghost:hover { border-color: rgba(255,255,255,.6); color: var(--white); }
+
+/* Credential strip */
+.hero-creds {
+  display: flex;
+  gap: 0;
+  border-top: 1px solid rgba(255,255,255,.1);
+  padding-top: 2rem;
+}
+
+.cred {
+  padding-right: 2.5rem;
+}
+
+.cred + .cred {
+  border-left: 1px solid rgba(255,255,255,.1);
+  padding-left: 2.5rem;
+}
+
+.cred-value {
+  font-family: var(--cond);
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: var(--white);
+  line-height: 1;
+  letter-spacing: -.01em;
+}
+
+.cred-label {
+  font-family: var(--body);
+  font-size: .65rem;
+  font-weight: 300;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.38);
+  margin-top: .3rem;
+}
+
+
+/* ─────────────────────────────────────────
+   MISSION STRIP
+───────────────────────────────────────── */
+.mission-strip {
+  background: var(--blue);
+  padding: 2.5rem var(--gutter);
+}
+
+.mission-strip-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.mission-strip-label {
+  font-family: var(--cond);
+  font-size: .65rem;
+  font-weight: 500;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.55);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.mission-strip-rule {
+  width: 1px;
+  height: 32px;
+  background: rgba(255,255,255,.25);
+  flex-shrink: 0;
+}
+
+.mission-strip-text {
+  font-family: var(--cond);
+  font-size: clamp(1rem, 2vw, 1.35rem);
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(255,255,255,.9);
+  line-height: 1.45;
+  letter-spacing: .01em;
+}
+
+
+/* ─────────────────────────────────────────
+   SERVICES
+───────────────────────────────────────── */
+.services {
+  padding: 6rem var(--gutter);
+  background: var(--off-white);
+}
+
+.services-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 3rem;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5px;
+  background: rgba(30,39,48,.1);
+  border: 1.5px solid rgba(30,39,48,.1);
+}
+
+.service-card {
+  background: var(--white);
+  padding: 2.5rem 2rem;
+  position: relative;
+  transition: background .22s;
+  border-top: 3px solid transparent;
+}
+
+.service-card:hover {
+  background: #fafcff;
+  border-top-color: var(--blue);
+}
+
+.service-num {
+  font-family: var(--cond);
+  font-size: .62rem;
+  font-weight: 500;
+  letter-spacing: .2em;
+  color: var(--blue-lt);
+  margin-bottom: 1.1rem;
+}
+
+.service-name {
+  font-family: var(--cond);
+  font-size: 1.15rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  color: var(--charcoal);
+  margin-bottom: .75rem;
+  line-height: 1.2;
+}
+
+.service-desc {
+  font-size: .875rem;
+  font-weight: 300;
+  line-height: 1.75;
+  color: var(--muted);
+}
+
+
+/* ─────────────────────────────────────────
+   ABOUT / HISTORY
+───────────────────────────────────────── */
+.about {
+  padding: 6rem var(--gutter);
+  background: var(--white);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+  max-width: var(--max);
+  margin: 0 auto;
+}
+
+.about-left {}
+
+.about-body {
+  font-size: .97rem;
+  font-weight: 300;
+  line-height: 1.85;
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+}
+
+/* Timeline */
+.timeline {
+  margin-top: 3rem;
+}
+
+.timeline-item {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 1.5rem;
+  padding-bottom: 2.25rem;
+  position: relative;
+}
+
+.timeline-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 35px;
+  top: 1.5rem;
+  bottom: 0;
+  width: 1px;
+  background: var(--rule);
+}
+
+.timeline-year {
+  font-family: var(--cond);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--blue);
+  letter-spacing: .04em;
+  padding-top: 2px;
+  text-align: right;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: 30px;
+  top: 6px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--blue);
+  border: 2px solid var(--white);
+  box-shadow: 0 0 0 1px var(--blue);
+}
+
+.timeline-content-wrap { padding-left: .25rem; }
+
+.timeline-title {
+  font-family: var(--cond);
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--charcoal);
+  margin-bottom: .5rem;
+}
+
+.timeline-body {
+  font-size: .875rem;
+  font-weight: 300;
+  line-height: 1.75;
+  color: var(--muted);
+}
+
+/* Right side — photo + credentials */
+.about-right {
+  position: sticky;
+  top: 5rem;
+}
+
+.about-photo-wrap {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.about-photo {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  display: block;
+  background: var(--off-white);
+}
+
+.about-photo-placeholder {
+  width: 100%;
+  aspect-ratio: 4/3;
+  background: linear-gradient(160deg, #dde3ea 0%, #c8d2db 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-photo-placeholder span {
+  font-family: var(--cond);
+  font-size: .65rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: rgba(30,39,48,.3);
+}
+
+/* Blue corner accent */
+.about-photo-wrap::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  width: 48px;
+  height: 48px;
+  border-top: 3px solid var(--blue);
+  border-left: 3px solid var(--blue);
+  z-index: 1;
+}
+
+.about-photo-wrap::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  right: -8px;
+  width: 48px;
+  height: 48px;
+  border-bottom: 3px solid var(--blue);
+  border-right: 3px solid var(--blue);
+}
+
+.about-creds {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+}
+
+.about-cred {
+  background: var(--off-white);
+  padding: 1.25rem 1.5rem;
+}
+
+.about-cred-value {
+  font-family: var(--cond);
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--charcoal);
+  letter-spacing: -.01em;
+  line-height: 1;
+}
+
+.about-cred-label {
+  font-family: var(--body);
+  font-size: .65rem;
+  font-weight: 300;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: .3rem;
+}
+
+
+/* ─────────────────────────────────────────
+   TEAM
+───────────────────────────────────────── */
+.team {
+  padding: 6rem var(--gutter);
+  background: var(--charcoal);
+}
+
+.team-header {
+  max-width: var(--max);
+  margin: 0 auto 3rem;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5px;
+  background: rgba(255,255,255,.08);
+  border: 1.5px solid rgba(255,255,255,.08);
+  max-width: var(--max);
+  margin: 0 auto;
+}
+
+.team-card {
+  background: var(--charcoal-2);
+  transition: background .22s;
+  overflow: hidden;
+}
+
+.team-card:hover { background: #2f3c4a; }
+
+.team-photo {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+}
+
+.team-photo-placeholder {
+  width: 100%;
+  aspect-ratio: 3/4;
+  background: linear-gradient(170deg, #2e3d4e 0%, #1e2b38 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.team-photo-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.team-photo-placeholder-label {
+  font-family: var(--cond);
+  font-size: .58rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.2);
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.team-info {
+  padding: 1.5rem;
+  border-top: 1px solid rgba(255,255,255,.07);
+}
+
+.team-name {
+  font-family: var(--cond);
+  font-size: 1.05rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--white);
+  margin-bottom: .3rem;
+}
+
+.team-role {
+  font-family: var(--body);
+  font-size: .75rem;
+  font-weight: 300;
+  color: var(--blue-lt);
+  letter-spacing: .04em;
+}
+
+.team-contact {
+  margin-top: .85rem;
+  padding-top: .85rem;
+  border-top: 1px solid rgba(255,255,255,.07);
+}
+
+.team-contact a {
+  font-family: var(--body);
+  font-size: .72rem;
+  font-weight: 300;
+  color: rgba(255,255,255,.38);
+  letter-spacing: .02em;
+  display: block;
+  transition: color .2s;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.team-contact a:hover { color: rgba(255,255,255,.75); }
+
+
+/* ─────────────────────────────────────────
+   INSIGHTS
+───────────────────────────────────────── */
+.insights {
+  padding: 6rem var(--gutter);
+  background: var(--off-white);
+}
+
+.insights-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  max-width: var(--max);
+  margin: 0 auto 3rem;
+}
+
+.insights-link {
+  font-family: var(--cond);
+  font-size: .72rem;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--blue);
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  transition: gap .2s;
+}
+
+.insights-link:hover { gap: .85rem; }
+
+.insights-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5px;
+  background: var(--rule);
+  border: 1.5px solid var(--rule);
+  max-width: var(--max);
+  margin: 0 auto;
+}
+
+.insight-card {
+  background: var(--white);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  transition: background .2s;
+  cursor: pointer;
+}
+
+.insight-card:hover { background: #f8fafd; }
+
+.insight-meta {
+  font-family: var(--cond);
+  font-size: .62rem;
+  font-weight: 500;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--blue-lt);
+  margin-bottom: 1rem;
+}
+
+.insight-title {
+  font-family: var(--cond);
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .03em;
+  color: var(--charcoal);
+  line-height: 1.25;
+  margin-bottom: .75rem;
+  flex: 1;
+}
+
+.insight-excerpt {
+  font-size: .85rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+}
+
+.insight-read {
+  font-family: var(--cond);
+  font-size: .68rem;
+  font-weight: 500;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--blue);
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  align-self: flex-start;
+  transition: gap .2s;
+}
+
+.insight-card:hover .insight-read { gap: .7rem; }
+
+
+/* ─────────────────────────────────────────
+   CONTACT
+───────────────────────────────────────── */
+.contact {
+  padding: 6rem var(--gutter);
+  background: var(--white);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  max-width: var(--max);
+  margin: 0 auto;
+  align-items: start;
+}
+
+.contact-info { }
+
+.contact-detail {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.contact-item-label {
+  font-family: var(--cond);
+  font-size: .62rem;
+  font-weight: 500;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--blue-lt);
+  margin-bottom: .3rem;
+}
+
+.contact-item-value {
+  font-size: .9rem;
+  font-weight: 300;
+  color: var(--charcoal);
+  line-height: 1.6;
+}
+
+.contact-item-value a {
+  color: var(--charcoal);
+  transition: color .2s;
+}
+
+.contact-item-value a:hover { color: var(--blue); }
+
+/* Form */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
+}
+
+.form-label {
+  font-family: var(--cond);
+  font-size: .62rem;
+  font-weight: 500;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  font-family: var(--body);
+  font-size: .9rem;
+  font-weight: 300;
+  color: var(--charcoal);
+  background: var(--off-white);
+  border: 1px solid rgba(30,39,48,.14);
+  padding: .75rem 1rem;
+  outline: none;
+  transition: border-color .2s, background .2s;
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 0;
+  width: 100%;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  border-color: var(--blue);
+  background: var(--white);
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder { color: rgba(30,39,48,.28); }
+
+.form-select {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%23546070' d='M5 6L0 0h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+}
+
+.form-select option { font-weight: 400; }
+
+.form-textarea {
+  resize: vertical;
+  min-height: 130px;
+  line-height: 1.6;
+}
+
+.form-submit {
+  font-family: var(--cond);
+  font-size: .82rem;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--white);
+  background: var(--blue);
+  border: 1px solid var(--blue);
+  padding: 1rem 2.5rem;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: background .2s;
+}
+
+.form-submit:hover { background: var(--blue-lt); border-color: var(--blue-lt); }
+
+.form-note {
+  font-size: .75rem;
+  font-weight: 300;
+  color: rgba(30,39,48,.35);
+  margin-top: .25rem;
+}
+
+
+/* ─────────────────────────────────────────
+   COOKIE CONSENT BANNER
+───────────────────────────────────────── */
+.cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  background: var(--charcoal);
+  border-top: 2px solid var(--blue);
+  box-shadow: 0 -4px 20px rgba(0,0,0,.3);
+}
+.cookie-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 1.25rem var(--gutter);
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.cookie-text {
+  font-family: var(--body);
+  font-size: .82rem;
+  font-weight: 300;
+  line-height: 1.6;
+  color: rgba(255,255,255,.7);
+  flex: 1;
+}
+.cookie-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-shrink: 0;
+}
+.cookie-accept {
+  font-family: var(--cond);
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--white);
+  background: var(--blue);
+  border: none;
+  padding: .7rem 1.75rem;
+  cursor: pointer;
+  transition: background .2s;
+}
+.cookie-accept:hover { background: var(--blue-lt); }
+.cookie-privacy {
+  font-family: var(--cond);
+  font-size: .65rem;
+  font-weight: 500;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.4);
+  text-decoration: underline;
+  white-space: nowrap;
+}
+.cookie-privacy:hover { color: rgba(255,255,255,.7); }
+
+@media (max-width: 768px) {
+  .cookie-inner { flex-direction: column; gap: 1rem; text-align: center; }
+  .cookie-actions { justify-content: center; }
+}
+
+
+/* ─────────────────────────────────────────
+   FOOTER
+───────────────────────────────────────── */
+.footer {
+  background: var(--charcoal);
+  border-top: 1px solid rgba(255,255,255,.07);
+}
+
+.footer-top {
+  padding: 3.5rem var(--gutter);
+  max-width: var(--max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  gap: 3rem;
+}
+
+.footer-brand-name {
+  font-family: var(--cond);
+  font-size: .9rem;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--white);
+  margin-top: .85rem;
+  margin-bottom: .3rem;
+}
+
+.footer-brand-sub {
+  font-family: var(--body);
+  font-size: .72rem;
+  font-weight: 300;
+  letter-spacing: .08em;
+  color: rgba(255,255,255,.3);
+  margin-bottom: 1.5rem;
+}
+
+.footer-tagline {
+  font-size: .85rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgba(255,255,255,.4);
+  max-width: 280px;
+  margin-bottom: 1.5rem;
+}
+
+/* aeroAI portal link in footer */
+.footer-portal {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  font-family: var(--cond);
+  font-size: .7rem;
+  font-weight: 500;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--white);
+  background: var(--blue);
+  padding: .6rem 1.25rem;
+  transition: background .2s;
+}
+
+.footer-portal:hover { background: var(--blue-lt); }
+
+.footer-col-title {
+  font-family: var(--cond);
+  font-size: .62rem;
+  font-weight: 500;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.32);
+  margin-bottom: 1.25rem;
+}
+
+.footer-col-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: .6rem;
+}
+
+.footer-col-links a {
+  font-size: .85rem;
+  font-weight: 300;
+  color: rgba(255,255,255,.5);
+  transition: color .2s;
+  display: block;
+}
+
+.footer-col-links a:hover { color: var(--white); }
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,.07);
+  padding: 1.5rem var(--gutter);
+  max-width: var(--max);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-legal {
+  font-family: var(--body);
+  font-size: .72rem;
+  font-weight: 300;
+  color: rgba(255,255,255,.25);
+}
+
+.footer-address {
+  font-family: var(--body);
+  font-size: .72rem;
+  font-weight: 300;
+  color: rgba(255,255,255,.25);
+  text-align: right;
+}
+
+
+/* ─────────────────────────────────────────
+   RESPONSIVE
+───────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .footer-top { grid-template-columns: 1fr 1fr; }
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
+  .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .about-right { position: static; }
+}
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-toggle { display: flex; }
+  .hero-photo-placeholder { display: none; }
+  .services-grid { grid-template-columns: 1fr 1fr; }
+  .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .insights-grid { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .mission-strip-inner { flex-direction: column; gap: 1rem; }
+  .mission-strip-rule { display: none; }
+  .hero-creds { flex-direction: column; gap: 1.5rem; }
+  .cred + .cred { border-left: none; padding-left: 0; border-top: 1px solid rgba(255,255,255,.1); padding-top: 1.5rem; }
+}
+
+@media (max-width: 540px) {
+  .services-grid { grid-template-columns: 1fr; }
+  .team-grid { grid-template-columns: 1fr 1fr; }
+  .footer-top { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  .footer-address { text-align: center; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ─────────────────────────────────────────
+     NAVIGATION
+───────────────────────────────────────── -->
+<header>
+  <nav class="nav" id="mainNav">
+    <div class="nav-inner">
+
+      <a href="#home" class="nav-logo" aria-label="Bridgeway Aero Tech">
+        <!-- Existing logo mark — keep your SVG/PNG here -->
+        <svg class="nav-logo-mark" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="19" cy="19" r="17" stroke="rgba(255,255,255,.45)" stroke-width="1.4"/>
+          <circle cx="19" cy="19" r="10.5" stroke="rgba(255,255,255,.25)" stroke-width="1"/>
+          <line x1="2" y1="19" x2="36" y2="19" stroke="rgba(255,255,255,.22)" stroke-width="1"/>
+          <line x1="19" y1="2" x2="19" y2="36" stroke="rgba(255,255,255,.22)" stroke-width="1"/>
+          <path d="M19 8 L22.5 19 L19 30 L15.5 19 Z" stroke="#1A7ACC" stroke-width="1.2" fill="none"/>
+          <circle cx="19" cy="19" r="2.2" fill="#1A7ACC"/>
+        </svg>
+        <div class="nav-wordmark">
+          Bridgeway Aero Tech
+          <span>Independent Aviation Advisory</span>
+        </div>
+      </a>
+
+      <ul class="nav-links" role="list">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#team">Our Team</a></li>
+        <li><a href="#insights">Insights</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="https://aeroai.ai" target="_blank" rel="noopener" class="nav-portal">Fleet Intelligence →</a></li>
+      </ul>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="nav-mobile" id="navMobile" role="navigation" aria-label="Mobile menu">
+    <ul role="list">
+      <li><a href="#about" class="mobile-link">About</a></li>
+      <li><a href="#services" class="mobile-link">Services</a></li>
+      <li><a href="#team" class="mobile-link">Our Team</a></li>
+      <li><a href="#insights" class="mobile-link">Insights</a></li>
+      <li><a href="#contact" class="mobile-link">Contact</a></li>
+    </ul>
+    <a href="https://aeroai.ai" target="_blank" rel="noopener" class="nav-portal-mobile">Fleet Intelligence → aeroAI</a>
+  </div>
+</header>
+
+
+<!-- ─────────────────────────────────────────
+     HERO
+───────────────────────────────────────── -->
+<main>
+<section class="hero" id="home" aria-label="Hero">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-grid-lines" aria-hidden="true"></div>
+  <div class="hero-accent-bar" aria-hidden="true"></div>
+
+  <!-- Right panel: swap this div for an <img> tag when photo is ready -->
+  <div class="hero-photo-placeholder" aria-hidden="true">
+    <div class="hero-photo-placeholder-label">Hero photo<br>to be supplied</div>
+  </div>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow">Independent Aviation Advisory &amp; Asset Management</p>
+    <h1 class="hero-headline">
+      Built for<br>
+      the demands<br>
+      <span class="italic-line">of complex aviation transactions.</span>
+    </h1>
+    <p class="hero-body">
+      Bridgeway Aero Tech provides independent, technically rigorous advisory and asset management services for investors, owners, airlines, and legal counsel.
+    </p>
+    <div class="hero-actions">
+      <a href="#services" class="btn-primary">Our Services</a>
+      <a href="#contact" class="btn-ghost">Get in Touch</a>
+    </div>
+    <div class="hero-creds">
+      <div class="cred">
+        <div class="cred-value">35+</div>
+        <div class="cred-label">Years Experience</div>
+      </div>
+      <div class="cred">
+        <div class="cred-value">ISTAT</div>
+        <div class="cred-label">Member</div>
+      </div>
+      <div class="cred">
+        <div class="cred-value">FAA</div>
+        <div class="cred-label">A&amp;P Licensed</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─────────────────────────────────────────
+     MISSION STRIP
+───────────────────────────────────────── -->
+<div class="mission-strip" aria-label="Our mission">
+  <div class="mission-strip-inner">
+    <span class="mission-strip-label">Our Mission</span>
+    <div class="mission-strip-rule" aria-hidden="true"></div>
+    <p class="mission-strip-text">
+      To provide independent, technically rigorous aviation advisory and asset management services that protect capital, reduce transactional risk, and maximize the value of aviation assets throughout their lifecycle.
+    </p>
+  </div>
+</div>
+
+
+<!-- ─────────────────────────────────────────
+     SERVICES
+───────────────────────────────────────── -->
+<section class="services" id="services" aria-labelledby="services-heading">
+  <div class="container">
+    <div class="services-header">
+      <div class="reveal">
+        <p class="section-eyebrow">What We Do</p>
+        <h2 class="section-title" id="services-heading">
+          Advisory across<br>every stage of the asset lifecycle
+        </h2>
+      </div>
+      <a href="#contact" class="btn-primary reveal reveal-delay-1" style="align-self:flex-end;">Request a Consultation</a>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-num">01</div>
+        <h3 class="service-name">Transaction Advisory</h3>
+        <p class="service-desc">Transaction support for aircraft and engine sales and leases, including contract negotiation, lease structuring, and closing coordination for investors, owners, airlines, and legal counsel.</p>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-num">02</div>
+        <h3 class="service-name">Technical Due Diligence</h3>
+        <p class="service-desc">Technical due diligence and documentation review covering airworthiness records, maintenance status, service bulletin compliance, and regulatory conformity to support informed transactional decisions.</p>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-num">03</div>
+        <h3 class="service-name">Fleet Strategy Advisory</h3>
+        <p class="service-desc">Independent fleet planning and strategy analysis for airlines, operators, and investors, covering acquisition, retirement, conversion, and lifecycle planning across aircraft and engine types.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-num">04</div>
+        <h3 class="service-name">Asset Management &amp; Inspections</h3>
+        <p class="service-desc">Hands-on asset management and physical inspections, including base checks, delivery and redelivery events, lease return inspections, and ongoing lessee monitoring for portfolio protection.</p>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-num">05</div>
+        <h3 class="service-name">Remarketing</h3>
+        <p class="service-desc">Remarketing of aviation assets, including placement advisory, operator identification, and remarketing strategy for aircraft and engines approaching transition or end of lease.</p>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-num">06</div>
+        <h3 class="service-name">Fleet Intelligence — aeroAI</h3>
+        <p class="service-desc">Clients access AI-assisted fleet monitoring and reporting through the aeroAI platform. Flight cycle tracking, maintenance scheduling support, and downloadable APEX reports — available through the client portal.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─────────────────────────────────────────
+     ABOUT / HISTORY
+───────────────────────────────────────── -->
+<section class="about" id="about" aria-labelledby="about-heading">
+  <div class="about-grid container">
+    <div class="about-left">
+      <div class="reveal">
+        <p class="section-eyebrow">About Us</p>
+        <h2 class="section-title" id="about-heading">
+          Independent expertise.<br>Disciplined execution.
+        </h2>
+        <span class="blue-rule" style="margin-top:1.5rem;"></span>
+      </div>
+
+      <p class="about-body reveal reveal-delay-1">
+        Bridgeway Aero Tech's team is comprised of seasoned aviation professionals specializing in aircraft acquisition, leasing, and regulatory compliance. We partner closely with clients to provide pragmatic, efficient solutions that reduce risk and enable seamless aircraft integration.
+      </p>
+      <p class="about-body reveal reveal-delay-1">
+        We serve investors, owners, airlines, and legal counsel by delivering clear, disciplined insight at the intersection of engineering, regulation, and commercial aviation — ensuring informed decisions, seamless execution, and reliable outcomes in complex aviation transactions.
+      </p>
+
+      <div class="timeline reveal reveal-delay-2">
+        <div class="timeline-item">
+          <div class="timeline-year">2005</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content-wrap">
+            <h4 class="timeline-title">Founded as TB Aviation Services</h4>
+            <p class="timeline-body">Established to provide independent, hands-on technical support to aircraft leasing companies without in-house technical teams, specializing in physical inspections, asset recovery, and technical evaluations designed to protect asset condition and ensure lease and regulatory compliance.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2024</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content-wrap">
+            <h4 class="timeline-title">Rebranded as Bridgeway Aero Tech</h4>
+            <p class="timeline-body">Expanded services beyond technical oversight to include aviation transaction advisory, asset management, remarketing, and aviation-specific support for investors and legal counsel. Today, Bridgeway Aero Tech delivers disciplined, independent expertise across the full aviation asset lifecycle, helping clients reduce risk and protect capital where engineering realities meet commercial and legal outcomes.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-right reveal reveal-delay-1">
+      <div class="about-photo-wrap">
+        <!-- Replace with: <img src="your-photo.jpg" alt="Bridgeway Aero Tech in the field" class="about-photo"> -->
+        <div class="about-photo-placeholder">
+          <span>Operational photo to be supplied</span>
+        </div>
+      </div>
+
+      <div class="about-creds">
+        <div class="about-cred">
+          <div class="about-cred-value">ISTAT</div>
+          <div class="about-cred-label">Long-standing member</div>
+        </div>
+        <div class="about-cred">
+          <div class="about-cred-value">FAA</div>
+          <div class="about-cred-label">A&amp;P Licensed</div>
+        </div>
+        <div class="about-cred">
+          <div class="about-cred-value">35+</div>
+          <div class="about-cred-label">Years in aviation</div>
+        </div>
+        <div class="about-cred">
+          <div class="about-cred-value">Indep.</div>
+          <div class="about-cred-label">No lessor affiliations</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─────────────────────────────────────────
+     TEAM
+───────────────────────────────────────── -->
+<section class="team" id="team" aria-labelledby="team-heading">
+  <div class="team-header reveal">
+    <p class="section-eyebrow">Our Team</p>
+    <h2 class="section-title section-title-light" id="team-heading">
+      Experienced professionals.<br>Practical judgment.
+    </h2>
+  </div>
+
+  <div class="team-grid">
+
+    <article class="team-card reveal">
+      <!-- Replace div below with: <img src="brian-dillion.jpg" alt="Brian R. Dillion" class="team-photo"> -->
+      <div class="team-photo-placeholder" aria-hidden="true">
+        <div class="team-photo-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        </div>
+        <span class="team-photo-placeholder-label">Photo to be supplied</span>
+      </div>
+      <div class="team-info">
+        <div class="team-name">Brian R. Dillion</div>
+        <div class="team-role">Founder &amp; CEO</div>
+        <div class="team-contact">
+          <a href="mailto:BrianDillion@BridgewayAeroTech.com">BrianDillion@BridgewayAeroTech.com</a>
+          <a href="tel:+14158198953">+1 415-819-8953</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="team-card reveal reveal-delay-1">
+      <div class="team-photo-placeholder" aria-hidden="true">
+        <div class="team-photo-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        </div>
+        <span class="team-photo-placeholder-label">Photo to be supplied</span>
+      </div>
+      <div class="team-info">
+        <div class="team-name">Jerome Basile</div>
+        <div class="team-role">VP Technical Operations</div>
+        <div class="team-contact">
+          <a href="mailto:JeromeBasile@BridgewayAeroTech.com">JeromeBasile@BridgewayAeroTech.com</a>
+          <a href="tel:+19412128060">+1 941-212-8060</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="team-card reveal reveal-delay-2">
+      <div class="team-photo-placeholder" aria-hidden="true">
+        <div class="team-photo-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        </div>
+        <span class="team-photo-placeholder-label">Photo to be supplied</span>
+      </div>
+      <div class="team-info">
+        <div class="team-name">Shannon Poulsen, PhD</div>
+        <div class="team-role">Insights &amp; Marketing Consultant</div>
+        <div class="team-contact">
+          <a href="mailto:info@BridgewayAeroTech.com">info@BridgewayAeroTech.com</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="team-card reveal reveal-delay-3">
+      <div class="team-photo-placeholder" aria-hidden="true">
+        <div class="team-photo-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        </div>
+        <span class="team-photo-placeholder-label">Photo to be supplied</span>
+      </div>
+      <div class="team-info">
+        <div class="team-name">John Miller</div>
+        <div class="team-role">Chief Commercial Officer</div>
+        <div class="team-contact">
+          <a href="mailto:JohnMiller@BridgewayAeroTech.com">JohnMiller@BridgewayAeroTech.com</a>
+          <a href="tel:+14074633645">+1 407-463-3645</a>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+
+<!-- ─────────────────────────────────────────
+     INSIGHTS
+───────────────────────────────────────── -->
+<section class="insights" id="insights" aria-labelledby="insights-heading">
+  <div class="insights-header">
+    <div class="reveal">
+      <p class="section-eyebrow">Insights</p>
+      <h2 class="section-title" id="insights-heading">
+        Aviation intelligence<br>from the field
+      </h2>
+    </div>
+    <a href="#" class="insights-link reveal reveal-delay-1">All Articles &nbsp;→</a>
+  </div>
+
+  <div class="insights-grid" id="blogFeed">
+    <!-- Articles loaded dynamically from blog feed -->
+    <article class="insight-card reveal">
+      <p class="insight-meta">MRO &amp; Maintenance &nbsp;·&nbsp; Coming Soon</p>
+      <h3 class="insight-title">Industry insights launching soon</h3>
+      <p class="insight-excerpt">Expert analysis on aircraft maintenance, airworthiness directives, technical operations, and asset management — curated by aviation professionals with decades of hands-on experience.</p>
+      <a href="#" class="insight-read">Stay Tuned &nbsp;→</a>
+    </article>
+    <article class="insight-card reveal reveal-delay-1">
+      <p class="insight-meta">Transaction Advisory &nbsp;·&nbsp; Coming Soon</p>
+      <h3 class="insight-title">Market intelligence from the field</h3>
+      <p class="insight-excerpt">Fleet transactions, leasing deals, market analysis, and acquisition strategy — data-driven perspectives from operators who have been on both sides of the table.</p>
+      <a href="#" class="insight-read">Stay Tuned &nbsp;→</a>
+    </article>
+    <article class="insight-card reveal reveal-delay-2">
+      <p class="insight-meta">Operations &amp; Finance &nbsp;·&nbsp; Coming Soon</p>
+      <h3 class="insight-title">Operational intelligence for decision makers</h3>
+      <p class="insight-excerpt">Route economics, fleet utilization, regulatory compliance, and financial analysis — the operational lens that investors, lessors, and C-suite executives need.</p>
+      <a href="#" class="insight-read">Stay Tuned &nbsp;→</a>
+    </article>
+  </div>
+</section>
+
+
+<!-- ─────────────────────────────────────────
+     CONTACT
+───────────────────────────────────────── -->
+<section class="contact" id="contact" aria-labelledby="contact-heading">
+  <div class="contact-grid">
+
+    <div class="contact-info">
+      <div class="reveal">
+        <p class="section-eyebrow">Contact</p>
+        <h2 class="section-title" id="contact-heading">
+          Let's discuss<br>your transaction.
+        </h2>
+        <span class="blue-rule" style="margin-top:1.5rem;"></span>
+      </div>
+
+      <p class="section-body reveal reveal-delay-1" style="margin-bottom:0;">
+        We work directly with investors, owners, airlines, and legal counsel on transactions of all sizes. Reach out to discuss how Bridgeway Aero Tech can support your next transaction or portfolio requirement.
+      </p>
+
+      <div class="contact-detail reveal reveal-delay-2">
+        <div>
+          <p class="contact-item-label">Office</p>
+          <p class="contact-item-value">6542 Quarry Ln<br>Dublin, OH 43017</p>
+        </div>
+        <div>
+          <p class="contact-item-label">Brian R. Dillion — Founder &amp; CEO</p>
+          <p class="contact-item-value">
+            <a href="mailto:BrianDillion@BridgewayAeroTech.com">BrianDillion@BridgewayAeroTech.com</a><br>
+            <a href="tel:+14158198953">+1 415-819-8953</a>
+          </p>
+        </div>
+        <div>
+          <p class="contact-item-label">Jerome Basile — VP Technical Operations</p>
+          <p class="contact-item-value">
+            <a href="mailto:JeromeBasile@BridgewayAeroTech.com">JeromeBasile@BridgewayAeroTech.com</a><br>
+            <a href="tel:+19412128060">+1 941-212-8060</a>
+          </p>
+        </div>
+        <div>
+          <p class="contact-item-label">Fleet Intelligence — aeroAI</p>
+          <p class="contact-item-value">
+            <a href="https://aeroai.ai" target="_blank" rel="noopener" style="color:var(--blue);">aeroai.ai ↗</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact form — action goes to Formspree or GoDaddy's built-in form handler -->
+    <div class="reveal reveal-delay-1">
+      <form
+        class="contact-form"
+        action="mailto:info@bridgewayaerotech.com"
+        method="post"
+        enctype="text/plain"
+        id="contactForm"
+        novalidate
+        aria-label="Contact form"
+      >
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="fname">First Name *</label>
+            <input class="form-input" type="text" id="fname" name="first_name" required autocomplete="given-name">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="lname">Last Name *</label>
+            <input class="form-input" type="text" id="lname" name="last_name" required autocomplete="family-name">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="company">Company / Organization</label>
+          <input class="form-input" type="text" id="company" name="company" autocomplete="organization">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="email">Email Address *</label>
+          <input class="form-input" type="email" id="email" name="email" required autocomplete="email">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="inquiry">Type of Inquiry</label>
+          <select class="form-select" id="inquiry" name="inquiry_type">
+            <option value="" disabled selected>Select one</option>
+            <option value="Transaction Advisory">Transaction Advisory</option>
+            <option value="Technical Due Diligence">Technical Due Diligence</option>
+            <option value="Asset Management">Asset Management</option>
+            <option value="Fleet Strategy">Fleet Strategy Advisory</option>
+            <option value="Remarketing">Remarketing</option>
+            <option value="Fleet Intelligence">Fleet Intelligence — aeroAI</option>
+            <option value="General">General Inquiry</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="message">Message *</label>
+          <textarea class="form-textarea" id="message" name="message" required placeholder="Brief description of your needs or transaction"></textarea>
+        </div>
+
+        <button type="submit" class="form-submit">Send Message</button>
+        <p class="form-note">Your message will be sent to info@bridgewayaerotech.com. We typically respond within one business day.</p>
+
+      </form>
+    </div>
+
+  </div>
+</section>
+</main>
+
+
+<!-- ─────────────────────────────────────────
+     FOOTER
+───────────────────────────────────────── -->
+<footer class="footer" aria-label="Site footer">
+  <div class="footer-top">
+
+    <div>
+      <svg width="36" height="36" viewBox="0 0 38 38" fill="none" aria-hidden="true">
+        <circle cx="19" cy="19" r="17" stroke="rgba(255,255,255,.3)" stroke-width="1.4"/>
+        <circle cx="19" cy="19" r="10.5" stroke="rgba(255,255,255,.15)" stroke-width="1"/>
+        <line x1="2" y1="19" x2="36" y2="19" stroke="rgba(255,255,255,.15)" stroke-width="1"/>
+        <line x1="19" y1="2" x2="19" y2="36" stroke="rgba(255,255,255,.15)" stroke-width="1"/>
+        <path d="M19 8 L22.5 19 L19 30 L15.5 19 Z" stroke="#1A7ACC" stroke-width="1.2" fill="none"/>
+        <circle cx="19" cy="19" r="2.2" fill="#1A7ACC"/>
+      </svg>
+      <div class="footer-brand-name">Bridgeway Aero Tech</div>
+      <div class="footer-brand-sub">Independent Aviation Advisory &amp; Asset Management</div>
+      <p class="footer-tagline">
+        Independent, technically rigorous aviation advisory and asset management services that protect capital, reduce transactional risk, and maximize the value of aviation assets throughout their lifecycle.
+      </p>
+      <a href="https://aeroai.ai" target="_blank" rel="noopener" class="footer-portal">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Fleet Intelligence — aeroAI
+      </a>
+    </div>
+
+    <div>
+      <div class="footer-col-title">Services</div>
+      <ul class="footer-col-links" role="list">
+        <li><a href="#services">Transaction Advisory</a></li>
+        <li><a href="#services">Technical Due Diligence</a></li>
+        <li><a href="#services">Fleet Strategy Advisory</a></li>
+        <li><a href="#services">Asset Management</a></li>
+        <li><a href="#services">Remarketing</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="footer-col-title">Company</div>
+      <ul class="footer-col-links" role="list">
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#team">Our Team</a></li>
+        <li><a href="#insights">Insights</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="footer-col-title">Connect</div>
+      <ul class="footer-col-links" role="list">
+        <li><a href="https://www.linkedin.com/company/bridgewayaerotech" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://x.com/bridgewayaero" target="_blank" rel="noopener">X / Twitter</a></li>
+        <li><a href="https://www.instagram.com/bridgewayaerotech" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://wa.me/14154486590" target="_blank" rel="noopener">WhatsApp</a></li>
+        <li><a href="https://t.me/bridgewayaerotech" target="_blank" rel="noopener">Telegram</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="footer-col-title">Contact</div>
+      <ul class="footer-col-links" role="list">
+        <li><a href="mailto:info@BridgewayAeroTech.com">info@BridgewayAeroTech.com</a></li>
+        <li><a href="tel:+14154486590">+1 415-448-6590</a></li>
+        <li style="color:rgba(255,255,255,.3);font-size:.85rem;font-weight:300;margin-top:.5rem;">6542 Quarry Ln<br>Dublin, OH 43017</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom container" style="padding-left:var(--gutter);padding-right:var(--gutter);">
+    <p class="footer-legal">© 2026 Bridgeway Aero Tech. All rights reserved. &nbsp;·&nbsp; <a href="#" id="privacyLink" style="color:rgba(255,255,255,.35);text-decoration:underline;">Privacy Policy</a></p>
+    <p class="footer-address">6542 Quarry Ln · Dublin, OH 43017 &nbsp;·&nbsp; TrustedSite Certified</p>
+  </div>
+</footer>
+
+<!-- COOKIE CONSENT BANNER -->
+<div id="cookieBanner" class="cookie-banner" role="dialog" aria-label="Cookie consent" style="display:none;">
+  <div class="cookie-inner">
+    <p class="cookie-text">This website uses essential cookies to ensure proper functionality. We do not use tracking or advertising cookies. By continuing to use this site, you consent to our use of essential cookies.</p>
+    <div class="cookie-actions">
+      <button id="cookieAccept" class="cookie-accept">Accept</button>
+      <a href="#" id="cookiePrivacy" class="cookie-privacy">Privacy Policy</a>
+    </div>
+  </div>
+</div>
+
+
+<!-- ─────────────────────────────────────────
+     JAVASCRIPT
+───────────────────────────────────────── -->
+<script>
+  // Nav scroll shadow
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  }, { passive: true });
+
+  // Mobile menu toggle
+  const toggle = document.getElementById('navToggle');
+  const mobileMenu = document.getElementById('navMobile');
+
+  toggle.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', isOpen);
+  });
+
+  // Close mobile menu on link click
+  document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Scroll-reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  revealEls.forEach(el => revealObserver.observe(el));
+
+  // Basic contact form validation feedback
+  const form = document.getElementById('contactForm');
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      const required = form.querySelectorAll('[required]');
+      let valid = true;
+      required.forEach(field => {
+        if (!field.value.trim()) {
+          field.style.borderColor = '#c0392b';
+          valid = false;
+        } else {
+          field.style.borderColor = '';
+        }
+      });
+      if (!valid) {
+        e.preventDefault();
+        alert('Please fill in all required fields before submitting.');
+      }
+    });
+  }
+
+  // Blog feed loader — fetches articles from JSON endpoint
+  async function loadBlogFeed() {
+    try {
+      const response = await fetch('/api/blog/posts.json');
+      if (!response.ok) return; // Fall back to placeholder content
+      const posts = await response.json();
+      const grid = document.getElementById('blogFeed');
+      if (!posts.length || !grid) return;
+
+      grid.innerHTML = posts.slice(0, 3).map((post, i) => `
+        <article class="insight-card reveal ${i > 0 ? 'reveal-delay-' + i : ''}">
+          <p class="insight-meta">${post.category} &nbsp;·&nbsp; ${post.date}</p>
+          <h3 class="insight-title">${post.title}</h3>
+          <p class="insight-excerpt">${post.excerpt}</p>
+          <a href="${post.url}" class="insight-read">Read Article &nbsp;→</a>
+        </article>
+      `).join('');
+
+      // Re-observe for scroll reveal
+      grid.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+    } catch (e) {
+      // Silently fail — placeholder content remains
+    }
+  }
+
+  // Load blog feed after page load
+  window.addEventListener('load', loadBlogFeed);
+
+  // Cookie consent banner
+  (function() {
+    const banner = document.getElementById('cookieBanner');
+    const acceptBtn = document.getElementById('cookieAccept');
+    if (!banner || !acceptBtn) return;
+
+    if (!localStorage.getItem('bat_cookie_consent')) {
+      banner.style.display = 'block';
+    }
+
+    acceptBtn.addEventListener('click', function() {
+      localStorage.setItem('bat_cookie_consent', 'accepted');
+      banner.style.display = 'none';
+    });
+  })();
+</script>
+
+</body>
+</html>
