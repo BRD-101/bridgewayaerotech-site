@@ -1,0 +1,43 @@
+{
+  "description": "Gallery image pool \u2014 displays 16 at a time, rotates 4 (25%) every 15 days.",
+  "photoSpec": {
+    "format": "jpg",
+    "width": 800,
+    "maxFileSize": "150 KB"
+  },
+  "images": [
+    "02-cloud-deck-peak.jpg",
+    "03-golden-gate-fog.jpg",
+    "04-sunset-above-clouds.jpg",
+    "05-sf-cliffs-aerial.jpg",
+    "06-greenland-glaciers.jpg",
+    "07-mountain-range-altitude.jpg",
+    "08-rockies-blue-sky.jpg",
+    "09-river-delta-sunset.jpg",
+    "11-sf-golden-hour.jpg",
+    "12-ocean-beach-coastline.jpg",
+    "13-desert-causeway.jpg",
+    "16-above-clouds-navy.jpg",
+    "17-cockpit-view.jpg",
+    "18-aerial-landscape.jpg",
+    "19-aircraft-ramp.jpg",
+    "20-business-jet.jpg",
+    "21-flight-ops.jpg",
+    "22-engine-detail.jpg",
+    "23-inspection-work.jpg",
+    "24-hangar-floor.jpg",
+    "25-aircraft-interior.jpg",
+    "26-maintenance-bay.jpg",
+    "27-field-work.jpg",
+    "28-technical-review.jpg",
+    "29-documentation.jpg",
+    "30-pre-flight.jpg",
+    "31-aerial-ops.jpg",
+    "32-aircraft-delivery.jpg",
+    "33-field-inspection.jpg",
+    "34-fleet-overview.jpg",
+    "35-landing-gear.jpg",
+    "36-private-jet-mx.jpg",
+    "37-road-above.jpg"
+  ]
+}
