@@ -822,7 +822,7 @@ a { text-decoration: none; color: inherit; }
 
 .team-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.5px;
   background: rgba(255,255,255,.08);
   border: 1.5px solid rgba(255,255,255,.08);
@@ -1826,7 +1826,6 @@ a { text-decoration: none; color: inherit; }
 ───────────────────────────────────────── */
 @media (max-width: 1024px) {
   .footer-top { grid-template-columns: 1fr 1fr; }
-  .team-grid { grid-template-columns: repeat(2, 1fr); }
   .about-grid { grid-template-columns: 1fr; gap: 3rem; }
   .about-right { position: static; }
   .gallery-grid { grid-template-columns: repeat(3, 1fr); }
@@ -1855,7 +1854,7 @@ a { text-decoration: none; color: inherit; }
 
 @media (max-width: 540px) {
   .services-grid { grid-template-columns: 1fr; }
-  .team-grid { grid-template-columns: 1fr 1fr; }
+  .team-grid { grid-template-columns: 1fr; }
   .footer-top { grid-template-columns: 1fr; }
   .footer-bottom { flex-direction: column; text-align: center; }
   .footer-address { text-align: center; }
