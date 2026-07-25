@@ -102,6 +102,20 @@ a { text-decoration: none; color: inherit; }
 .reveal-delay-3 { transition-delay: .3s; }
 .reveal-delay-4 { transition-delay: .4s; }
 
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--blue-lt);
+  outline-offset: 2px;
+}
+
 /* Honeypot field — invisible to humans */
 .form-hp {
   position: absolute;
@@ -465,8 +479,18 @@ a { text-decoration: none; color: inherit; }
   font-weight: 300;
   letter-spacing: .12em;
   text-transform: uppercase;
-  color: rgba(255,255,255,.38);
+  color: rgba(255,255,255,.55);
   margin-top: .3rem;
+}
+
+.hero-creds-note {
+  font-family: var(--cond);
+  font-size: .72rem;
+  font-weight: 500;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.62);
+  margin-top: .9rem;
 }
 
 /* Scroll-down indicator */
@@ -561,6 +585,16 @@ a { text-decoration: none; color: inherit; }
   flex-wrap: wrap;
 }
 
+.services-group-label {
+  font-family: var(--cond);
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 2.5rem 0 .85rem;
+}
+
 .services-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -568,6 +602,12 @@ a { text-decoration: none; color: inherit; }
   background: rgba(30,39,48,.1);
   border: 1.5px solid rgba(30,39,48,.1);
 }
+
+.service-desc-link {
+  color: var(--blue);
+  font-weight: 400;
+}
+.service-desc-link:hover { text-decoration: underline; }
 
 .service-card {
   background: var(--white);
@@ -1499,8 +1539,21 @@ a { text-decoration: none; color: inherit; }
 .form-note {
   font-size: .75rem;
   font-weight: 300;
-  color: rgba(30,39,48,.35);
+  color: rgba(30,39,48,.55);
   margin-top: .25rem;
+}
+
+/* Inline field validation */
+.form-error {
+  font-size: .78rem;
+  font-weight: 400;
+  color: #a93226;
+  margin-top: .35rem;
+}
+
+.form-input.input-invalid,
+.form-textarea.input-invalid {
+  border-color: #a93226;
 }
 
 /* Form success message */

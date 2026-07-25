@@ -112,37 +112,113 @@
   }
 
 
-  // ─── Contact form validation with honeypot ───
+  // ─── Contact form: validation + submission ───
+  // Set FORM_ENDPOINT to a form-handling URL (e.g. Formspree/Basin or a
+  // self-hosted endpoint) to submit via fetch. While empty, the form falls
+  // back to opening the visitor's email app with the message pre-filled,
+  // and always confirms on-page so the lead path is never silent.
+  const FORM_ENDPOINT = '';
+  const CONTACT_EMAIL = 'info@bridgewayaerotech.com';
+
   const form = document.getElementById('contactForm');
+  const formSuccess = document.getElementById('formSuccess');
+
+  function setFieldError(field, message) {
+    field.classList.add('input-invalid');
+    field.setAttribute('aria-invalid', 'true');
+    let err = field.parentElement.querySelector('.form-error');
+    if (!err) {
+      err = document.createElement('p');
+      err.className = 'form-error';
+      err.id = field.id + '-error';
+      field.parentElement.appendChild(err);
+    }
+    err.textContent = message;
+    field.setAttribute('aria-describedby', err.id);
+  }
+
+  function clearFieldError(field) {
+    field.classList.remove('input-invalid');
+    field.removeAttribute('aria-invalid');
+    const err = field.parentElement.querySelector('.form-error');
+    if (err) err.remove();
+  }
+
+  function showSuccess(title, text) {
+    form.style.display = 'none';
+    if (formSuccess) {
+      formSuccess.querySelector('.form-success-title').textContent = title;
+      formSuccess.querySelector('.form-success-text').textContent = text;
+      formSuccess.classList.add('visible');
+      formSuccess.setAttribute('tabindex', '-1');
+      formSuccess.focus();
+    }
+  }
+
   if (form) {
+    form.querySelectorAll('.form-input, .form-textarea').forEach(field => {
+      field.addEventListener('input', () => clearFieldError(field));
+    });
+
     form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
       // Honeypot check — if the hidden field is filled, it's a bot
       const honeypot = form.querySelector('[name="website"]');
-      if (honeypot && honeypot.value) {
-        e.preventDefault();
+      if (honeypot && honeypot.value) return;
+
+      // Field validation with visible messages
+      let firstInvalid = null;
+      const labels = { fname: 'first name', lname: 'last name', email: 'email address', message: 'message' };
+      form.querySelectorAll('[required]').forEach(field => {
+        clearFieldError(field);
+        const label = labels[field.id] || 'this field';
+        if (!field.value.trim()) {
+          setFieldError(field, 'Please enter your ' + label + '.');
+          firstInvalid = firstInvalid || field;
+        } else if (field.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value.trim())) {
+          setFieldError(field, 'That email address doesn’t look complete — please check it.');
+          firstInvalid = firstInvalid || field;
+        }
+      });
+      if (firstInvalid) {
+        firstInvalid.focus();
+        firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
         return;
       }
 
-      // Required field validation
-      const required = form.querySelectorAll('[required]');
-      let valid = true;
-      required.forEach(field => {
-        if (!field.value.trim()) {
-          field.style.borderColor = '#c0392b';
-          valid = false;
-        } else {
-          field.style.borderColor = '';
-        }
-      });
+      const data = new FormData(form);
+      data.delete('website');
 
-      if (!valid) {
-        e.preventDefault();
-        // Show inline error instead of alert
-        const firstInvalid = form.querySelector('[required]:invalid, [style*="c0392b"]');
-        if (firstInvalid) {
-          firstInvalid.focus();
-          firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
+      if (FORM_ENDPOINT) {
+        const submitBtn = form.querySelector('.form-submit');
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending…';
+        fetch(FORM_ENDPOINT, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } })
+          .then(res => {
+            if (!res.ok) throw new Error('send failed');
+            showSuccess('Message Sent', 'Thank you for reaching out. We typically respond within one business day.');
+          })
+          .catch(() => {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Send Message';
+            setFieldError(form.querySelector('#message'),
+              'We couldn’t send your message right now. Please email us directly at ' + CONTACT_EMAIL + '.');
+          });
+      } else {
+        // No endpoint configured: open the visitor's email app pre-filled,
+        // and confirm on-page with a direct-email fallback.
+        const subject = 'Inquiry' + (data.get('inquiry_type') ? ' — ' + data.get('inquiry_type') : '') +
+          ' from ' + data.get('first_name') + ' ' + data.get('last_name');
+        const body = 'Name: ' + data.get('first_name') + ' ' + data.get('last_name') + '\n' +
+          'Company: ' + (data.get('company') || '—') + '\n' +
+          'Email: ' + data.get('email') + '\n' +
+          'Inquiry type: ' + (data.get('inquiry_type') || 'General') + '\n\n' +
+          data.get('message');
+        window.location.href = 'mailto:' + CONTACT_EMAIL +
+          '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+        showSuccess('Almost done — check your email app',
+          'Your email app should now be open with your message ready to send. If it didn’t open, email us directly at ' + CONTACT_EMAIL + ' and we’ll respond within one business day.');
       }
     });
   }
@@ -155,171 +231,63 @@
   }
 
 
-  // ─── News Feed: auto-refresh with 24-hour localStorage cache ───
-  const NEWS_CACHE_KEY = 'bat_news_cache';
-  const NEWS_CACHE_TTL = 24 * 60 * 60 * 1000; // 24 hours in ms
-  const NEWS_API_URL = ''; // Configure when aggregator app is ready
+  // ─── Insights: rendered from assets/blog/posts.json ───
+  // The file is generated by the content pipeline on article approval.
+  // Section and nav links stay hidden until at least one post exists.
+  var INSIGHT_SECTIONS = { MRO: 'MRO & Maintenance', OPS_FINANCE: 'Operations & Finance', AI_TECH: 'AI & Technology' };
 
-  const insightsGrid = document.getElementById('insightsGrid');
-
-  function createSkeletonCard() {
-    const card = document.createElement('div');
-    card.className = 'insight-skeleton';
-    card.innerHTML =
-      '<div class="insight-skeleton-img"></div>' +
-      '<div class="insight-skeleton-body">' +
-        '<div class="insight-skeleton-line"></div>' +
-        '<div class="insight-skeleton-line"></div>' +
-        '<div class="insight-skeleton-line"></div>' +
-        '<div class="insight-skeleton-line"></div>' +
-        '<div class="insight-skeleton-line"></div>' +
-      '</div>';
-    return card;
+  function insightDateLabel(iso) {
+    var d = new Date(iso);
+    if (isNaN(d)) return '';
+    return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
   }
 
-  function showSkeletons() {
-    if (!insightsGrid) return;
-    insightsGrid.innerHTML = '';
-    for (let i = 0; i < 3; i++) {
-      insightsGrid.appendChild(createSkeletonCard());
-    }
-  }
+  function renderInsightCards(posts) {
+    var section = document.getElementById('insights');
+    var grid = document.getElementById('insightsGrid');
+    if (!section || !grid || !posts.length) return;
 
-  function renderInsights(articles) {
-    if (!insightsGrid || !articles || !articles.length) return;
-    insightsGrid.innerHTML = '';
-    articles.slice(0, 3).forEach(function(article) {
-      const card = document.createElement('article');
-      card.className = 'insight-card reveal visible';
-      card.innerHTML =
-        '<img src="' + (article.image || 'assets/images/insights/article-01.jpg') + '" alt="" class="insight-card-img" loading="lazy">' +
-        '<div class="insight-card-body">' +
-          '<p class="insight-meta">' + (article.category || 'Aviation') + ' &nbsp;&middot;&nbsp; ' + (article.date || '') + '</p>' +
-          '<h3 class="insight-title">' + (article.title || '') + '</h3>' +
-          '<p class="insight-excerpt">' + (article.excerpt || '') + '</p>' +
-          '<a href="' + (article.url || '#') + '" class="insight-read" target="_blank" rel="noopener">Read Article &nbsp;&rarr;</a>' +
-        '</div>';
-      insightsGrid.appendChild(card);
+    posts.slice(0, 3).forEach(function(post, i) {
+      var card = document.createElement('article');
+      card.className = 'insight-card reveal' + (i > 0 ? ' reveal-delay-' + i : '');
+
+      var body = document.createElement('div');
+      body.className = 'insight-card-body';
+
+      var meta = document.createElement('p');
+      meta.className = 'insight-meta';
+      meta.textContent = (INSIGHT_SECTIONS[post.section] || 'Aviation') + '  ·  ' + insightDateLabel(post.published_at);
+
+      var title = document.createElement('h3');
+      title.className = 'insight-title';
+      title.textContent = post.headline || '';
+
+      var excerpt = document.createElement('p');
+      excerpt.className = 'insight-excerpt';
+      excerpt.textContent = post.summary || '';
+
+      var link = document.createElement('a');
+      link.className = 'insight-read';
+      link.href = 'article.html?id=' + encodeURIComponent(post.id);
+      link.textContent = 'Read Article  →';
+
+      body.appendChild(meta);
+      body.appendChild(title);
+      body.appendChild(excerpt);
+      body.appendChild(link);
+      card.appendChild(body);
+      grid.appendChild(card);
     });
+
+    section.hidden = false;
+    document.querySelectorAll('.nav-insights-link').forEach(function(li) { li.hidden = false; });
+    grid.querySelectorAll('.reveal').forEach(function(el) { revealObserver.observe(el); });
   }
 
-  function fetchAndCacheInsights() {
-    showSkeletons();
-    fetch(NEWS_API_URL)
-      .then(function(res) {
-        if (!res.ok) throw new Error('Network response was not ok');
-        return res.json();
-      })
-      .then(function(data) {
-        var articles = data.articles || data;
-        localStorage.setItem(NEWS_CACHE_KEY, JSON.stringify({
-          articles: articles,
-          timestamp: Date.now()
-        }));
-        renderInsights(articles);
-      })
-      .catch(function() {
-        // On error, try to fall back to stale cache
-        var cached = localStorage.getItem(NEWS_CACHE_KEY);
-        if (cached) {
-          renderInsights(JSON.parse(cached).articles);
-        } else {
-          // Restore static HTML fallback — reload page section
-          // (the static cards are gone, so just clear skeletons)
-          if (insightsGrid) insightsGrid.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:var(--muted);font-size:.9rem;padding:3rem 0;">News feed unavailable. Please check back later.</p>';
-        }
-      });
-  }
-
-  function loadInsights() {
-    if (!insightsGrid || !NEWS_API_URL) return; // No API configured — keep static cards
-    var cached = localStorage.getItem(NEWS_CACHE_KEY);
-    if (cached) {
-      try {
-        var data = JSON.parse(cached);
-        if (Date.now() - data.timestamp < NEWS_CACHE_TTL) {
-          renderInsights(data.articles);
-          return;
-        }
-      } catch(e) {
-        localStorage.removeItem(NEWS_CACHE_KEY);
-      }
-    }
-    fetchAndCacheInsights();
-  }
-
-  loadInsights();
-
-
-  // ─── Blog Feed: "Thoughts from Our Advisory" weekly post ───
-  // Reads from assets/blog/latest.json (auto-uploaded by content pipeline)
-  // Caches in localStorage for 1 hour to reduce re-fetches during session
-  const BLOG_CACHE_KEY = 'bat_blog_cache';
-  const BLOG_CACHE_TTL = 60 * 60 * 1000; // 1 hour
-  const BLOG_JSON_URL = 'assets/blog/latest.json';
-
-  function renderBlogPost(post) {
-    var title = document.getElementById('blogTitle');
-    var meta = document.getElementById('blogMeta');
-    var excerpt = document.getElementById('blogExcerpt');
-    var author = document.getElementById('blogAuthor');
-    var authorRole = document.getElementById('blogAuthorRole');
-    var img = document.getElementById('blogImg');
-    var readLink = document.getElementById('blogReadLink');
-    var linkedIn = document.getElementById('blogLinkedIn');
-    var instagram = document.getElementById('blogInstagram');
-
-    if (title) title.textContent = post.headline || '';
-    if (meta) meta.innerHTML = (post.category || '') + ' &nbsp;&middot;&nbsp; ' + (post.date || '');
-    if (excerpt) excerpt.textContent = post.excerpt || '';
-    if (author) author.textContent = post.author || '';
-    if (authorRole) authorRole.textContent = post.authorRole || '';
-    if (img && post.image) img.src = post.image;
-    if (readLink && post.articleUrl) readLink.href = post.articleUrl;
-    if (linkedIn && post.linkedinUrl) linkedIn.href = post.linkedinUrl;
-    if (instagram && post.instagramUrl) instagram.href = post.instagramUrl;
-  }
-
-  function loadBlogPost() {
-    var blogEl = document.getElementById('blogFeatured');
-    if (!blogEl) return;
-
-    // Check cache
-    var cached = localStorage.getItem(BLOG_CACHE_KEY);
-    if (cached) {
-      try {
-        var data = JSON.parse(cached);
-        if (Date.now() - data.timestamp < BLOG_CACHE_TTL) {
-          renderBlogPost(data.post);
-          return;
-        }
-      } catch(e) {
-        localStorage.removeItem(BLOG_CACHE_KEY);
-      }
-    }
-
-    // Fetch latest
-    fetch(BLOG_JSON_URL)
-      .then(function(res) {
-        if (!res.ok) throw new Error('Blog fetch failed');
-        return res.json();
-      })
-      .then(function(data) {
-        if (data.posts && data.posts.length > 0) {
-          var post = data.posts[0];
-          localStorage.setItem(BLOG_CACHE_KEY, JSON.stringify({
-            post: post,
-            timestamp: Date.now()
-          }));
-          renderBlogPost(post);
-        }
-      })
-      .catch(function() {
-        // Keep static HTML content as fallback — no action needed
-      });
-  }
-
-  loadBlogPost();
+  fetch('assets/blog/posts.json')
+    .then(function(res) { if (!res.ok) throw new Error('no posts'); return res.json(); })
+    .then(function(data) { renderInsightCards(data.posts || []); })
+    .catch(function() { /* no posts yet — section stays hidden */ });
 
 
   // ─── Gallery: 15-day rotation, 25% swap ───
@@ -475,28 +443,3 @@
   });
 })();
 
-// ── Blog feed loader ──
-async function loadBlogFeed() {
-  try {
-    const response = await fetch('/api/blog/posts.json');
-    if (!response.ok) return;
-    const posts = await response.json();
-    const grid = document.getElementById('insightsGrid');
-    if (!posts.length || !grid) return;
-
-    grid.innerHTML = posts.slice(0, 3).map((post, i) => `
-      <article class="insight-card reveal ${i > 0 ? 'reveal-delay-' + i : ''}">
-        <div class="insight-card-body">
-          <p class="insight-meta">${post.category} &nbsp;·&nbsp; ${post.date}</p>
-          <h3 class="insight-title">${post.title}</h3>
-          <p class="insight-excerpt">${post.excerpt}</p>
-          <a href="${post.url}" class="insight-read">Read Article &nbsp;→</a>
-        </div>
-      </article>
-    `).join('');
-  } catch (e) {
-    // Silently fail — placeholder content remains
-  }
-}
-
-window.addEventListener('load', loadBlogFeed);
