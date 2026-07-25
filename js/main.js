@@ -290,15 +290,15 @@
     .catch(function() { /* no posts yet — section stays hidden */ });
 
 
-  // ─── Gallery: 15-day rotation, 25% swap ───
+  // ─── Gallery: hourly rotation, 25% swap ───
   // Displays 16 images from the manifest pool.
-  // Every 15 days, 4 images (one group of 4) rotate out for fresh ones.
+  // Every hour, 4 images (one group of 4) rotate out for fresh ones.
   // 16 slots are split into 4 groups of 4. Each group's "generation"
-  // increments every 4 periods (60 days), staggered so only one group
-  // changes per period — guaranteeing exactly 25% turnover each cycle.
+  // increments every 4 periods, staggered so only one group changes
+  // per period — guaranteeing exactly 25% turnover each cycle.
 
   var GALLERY_DISPLAY = 16;
-  var GALLERY_PERIOD_DAYS = 15;
+  var GALLERY_PERIOD_MS = 3600000; // 1 hour
   var GALLERY_MANIFEST_URL = 'assets/images/gallery/manifest.json';
   var GALLERY_IMG_BASE = 'assets/images/gallery/';
   var GALLERY_REF_DATE = new Date(2026, 2, 15).getTime(); // March 15, 2026
@@ -404,8 +404,7 @@
     var grid = document.getElementById('galleryGrid');
     if (!grid) return;
 
-    var daysSinceRef = Math.floor((Date.now() - GALLERY_REF_DATE) / (GALLERY_PERIOD_DAYS * 86400000));
-    var period = Math.max(0, daysSinceRef);
+    var period = Math.max(0, Math.floor((Date.now() - GALLERY_REF_DATE) / GALLERY_PERIOD_MS));
 
     fetch(GALLERY_MANIFEST_URL)
       .then(function(res) {
