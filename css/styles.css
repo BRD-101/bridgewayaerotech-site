@@ -1357,6 +1357,57 @@ a { text-decoration: none; color: inherit; }
 
 .insight-card:hover .insight-read { gap: .7rem; }
 
+/* Featured weekly editorial */
+.editorial-featured {
+  background: var(--charcoal);
+  color: var(--white);
+  padding: clamp(2rem, 4vw, 3.5rem);
+  margin-bottom: 2.5rem;
+  border-top: 3px solid var(--blue);
+}
+
+.editorial-label {
+  font-family: var(--cond);
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: var(--blue-lt);
+  margin-bottom: 1rem;
+}
+
+.editorial-title {
+  font-family: var(--cond);
+  font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .02em;
+  line-height: 1.2;
+  margin-bottom: .9rem;
+  max-width: 26ch;
+}
+
+.editorial-excerpt {
+  font-size: .98rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgba(255,255,255,.75);
+  max-width: 62ch;
+  margin-bottom: 1.1rem;
+}
+
+.editorial-byline {
+  font-family: var(--cond);
+  font-size: .74rem;
+  font-weight: 500;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.55);
+  margin-bottom: 1.4rem;
+}
+
+.editorial-featured .insight-read { color: var(--blue-lt); }
+
 /* Skeleton loading state for news feed */
 .insight-skeleton {
   background: var(--white);
