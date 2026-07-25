@@ -52,6 +52,15 @@
     background: var(--blue);
     margin-bottom: 2rem;
   }
+  .article-byline {
+    font-family: var(--cond);
+    font-size: .82rem;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: -1rem 0 1.6rem;
+  }
   .article-body p {
     font-size: 1rem;
     font-weight: 300;
@@ -91,6 +100,7 @@
 (function() {
   'use strict';
   var SECTIONS = { MRO: 'MRO & Maintenance', OPS_FINANCE: 'Operations & Finance', AI_TECH: 'AI & Technology' };
+  var TONE_LABELS = { AGREE: 'Favorable', CAUTION: 'Caution', CONCERN: 'Concern' };
   var root = document.getElementById('articleRoot');
   var id = new URLSearchParams(window.location.search).get('id');
 
@@ -102,15 +112,17 @@
     root.appendChild(p);
   }
 
-  function render(post) {
+  function render(post, isOpinion) {
     document.title = post.headline + ' | Bridgeway Aero Tech';
     root.textContent = '';
 
     var meta = document.createElement('p');
     meta.className = 'article-meta';
     var d = new Date(post.published_at);
-    meta.textContent = (SECTIONS[post.section] || 'Aviation') + '  ·  ' +
-      (isNaN(d) ? '' : d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }));
+    var dateStr = isNaN(d) ? '' : d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    meta.textContent = isOpinion
+      ? 'The Bridgeway Position' + (TONE_LABELS[post.tone] ? '  ·  ' + TONE_LABELS[post.tone] : '') + '  ·  ' + dateStr
+      : (SECTIONS[post.section] || 'Aviation') + '  ·  ' + dateStr;
 
     var h1 = document.createElement('h1');
     h1.className = 'article-headline';
@@ -131,12 +143,22 @@
     root.appendChild(meta);
     root.appendChild(h1);
     root.appendChild(rule);
+
+    if (isOpinion) {
+      var byline = document.createElement('p');
+      byline.className = 'article-byline';
+      byline.textContent = 'By ' + (post.author || 'Brian R. Dillion') + ', ' + (post.author_role || 'Founder & Principal');
+      root.appendChild(byline);
+    }
+
     root.appendChild(body);
 
     if (post.source_url || post.source) {
       var src = document.createElement('p');
       src.className = 'article-source';
-      src.appendChild(document.createTextNode('Reporting based on coverage from ' + (post.source || 'the source') + '. '));
+      src.appendChild(document.createTextNode(
+        (isOpinion ? 'This column responds to reporting from ' : 'Reporting based on coverage from ') +
+        (post.source || 'the source') + '. '));
       if (post.source_url) {
         var a = document.createElement('a');
         a.href = post.source_url;
@@ -153,8 +175,13 @@
   fetch('assets/blog/posts.json')
     .then(function(res) { if (!res.ok) throw new Error('no posts'); return res.json(); })
     .then(function(data) {
-      var post = (data.posts || []).find(function(p) { return p.id === id; });
-      if (post) render(post); else showMissing();
+      var news = data.posts || [];
+      var editorials = (data.featured ? [data.featured] : []).concat(data.opinions || []);
+      var post = news.find(function(p) { return p.id === id; });
+      if (post) { render(post, false); return; }
+      post = editorials.find(function(p) { return p.id === id; });
+      if (post) { render(post, true); return; }
+      showMissing();
     })
     .catch(showMissing);
 })();
