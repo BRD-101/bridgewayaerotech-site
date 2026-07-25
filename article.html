@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insights | Bridgeway Aero Tech</title>
+<meta name="description" content="Aviation intelligence from the field — insights from Bridgeway Aero Tech.">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="bat-logo-files/icononly_transparent.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Barlow+Condensed:ital,wght@0,300;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<style>
+  .article-page {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 7rem var(--gutter) 5rem;
+  }
+  .article-back {
+    display: inline-block;
+    font-family: var(--cond);
+    font-size: .8rem;
+    font-weight: 600;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 2.2rem;
+  }
+  .article-back:hover { text-decoration: underline; }
+  .article-meta {
+    font-family: var(--cond);
+    font-size: .78rem;
+    font-weight: 500;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--blue-lt);
+    margin-bottom: .9rem;
+  }
+  .article-headline {
+    font-family: var(--cond);
+    font-size: clamp(1.7rem, 3.4vw, 2.6rem);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .02em;
+    line-height: 1.15;
+    margin-bottom: 1.2rem;
+  }
+  .article-rule {
+    width: 56px;
+    height: 3px;
+    background: var(--blue);
+    margin-bottom: 2rem;
+  }
+  .article-body p {
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.85;
+    color: var(--charcoal);
+    margin-bottom: 1.2rem;
+    max-width: 68ch;
+  }
+  .article-source {
+    margin-top: 2.5rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--rule);
+    font-size: .85rem;
+    font-weight: 300;
+    color: var(--muted);
+  }
+  .article-source a { color: var(--blue); }
+  .article-source a:hover { text-decoration: underline; }
+  .article-missing {
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--muted);
+    padding: 3rem 0;
+  }
+</style>
+</head>
+<body>
+
+<main class="article-page">
+  <a href="index.html#insights" class="article-back">← Back to BridgewayAeroTech.com</a>
+  <div id="articleRoot">
+    <p class="article-missing">Loading…</p>
+  </div>
+</main>
+
+<script>
+(function() {
+  'use strict';
+  var SECTIONS = { MRO: 'MRO & Maintenance', OPS_FINANCE: 'Operations & Finance', AI_TECH: 'AI & Technology' };
+  var root = document.getElementById('articleRoot');
+  var id = new URLSearchParams(window.location.search).get('id');
+
+  function showMissing() {
+    root.textContent = '';
+    var p = document.createElement('p');
+    p.className = 'article-missing';
+    p.textContent = 'This article isn’t available. It may have been moved or removed.';
+    root.appendChild(p);
+  }
+
+  function render(post) {
+    document.title = post.headline + ' | Bridgeway Aero Tech';
+    root.textContent = '';
+
+    var meta = document.createElement('p');
+    meta.className = 'article-meta';
+    var d = new Date(post.published_at);
+    meta.textContent = (SECTIONS[post.section] || 'Aviation') + '  ·  ' +
+      (isNaN(d) ? '' : d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }));
+
+    var h1 = document.createElement('h1');
+    h1.className = 'article-headline';
+    h1.textContent = post.headline || '';
+
+    var rule = document.createElement('div');
+    rule.className = 'article-rule';
+
+    var body = document.createElement('div');
+    body.className = 'article-body';
+    String(post.body || '').split(/\n\s*\n/).forEach(function(par) {
+      if (!par.trim()) return;
+      var p = document.createElement('p');
+      p.textContent = par.trim();
+      body.appendChild(p);
+    });
+
+    root.appendChild(meta);
+    root.appendChild(h1);
+    root.appendChild(rule);
+    root.appendChild(body);
+
+    if (post.source_url || post.source) {
+      var src = document.createElement('p');
+      src.className = 'article-source';
+      src.appendChild(document.createTextNode('Reporting based on coverage from ' + (post.source || 'the source') + '. '));
+      if (post.source_url) {
+        var a = document.createElement('a');
+        a.href = post.source_url;
+        a.target = '_blank';
+        a.rel = 'noopener';
+        a.textContent = 'Read the original article ↗';
+        src.appendChild(a);
+      }
+      root.appendChild(src);
+    }
+  }
+
+  if (!id) { showMissing(); return; }
+  fetch('assets/blog/posts.json')
+    .then(function(res) { if (!res.ok) throw new Error('no posts'); return res.json(); })
+    .then(function(data) {
+      var post = (data.posts || []).find(function(p) { return p.id === id; });
+      if (post) render(post); else showMissing();
+    })
+    .catch(showMissing);
+})();
+</script>
+
+</body>
+</html>

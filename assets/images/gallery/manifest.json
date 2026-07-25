@@ -1,5 +1,5 @@
 {
-  "description": "Gallery image pool \u2014 displays 16 at a time, rotates 4 (25%) every 15 days.",
+  "description": "Gallery image pool — displays 16 at a time, rotates 4 (25%) every hour.",
   "photoSpec": {
     "format": "jpg",
     "width": 800,
@@ -24,12 +24,10 @@
     "20-business-jet.jpg",
     "21-flight-ops.jpg",
     "22-engine-detail.jpg",
-    "23-inspection-work.jpg",
     "24-hangar-floor.jpg",
     "25-aircraft-interior.jpg",
     "26-maintenance-bay.jpg",
     "27-field-work.jpg",
-    "28-technical-review.jpg",
     "29-documentation.jpg",
     "30-pre-flight.jpg",
     "31-aerial-ops.jpg",
@@ -37,7 +35,6 @@
     "33-field-inspection.jpg",
     "34-fleet-overview.jpg",
     "35-landing-gear.jpg",
-    "36-private-jet-mx.jpg",
-    "37-road-above.jpg"
+    "36-private-jet-mx.jpg"
   ]
 }

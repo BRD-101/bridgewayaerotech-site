@@ -78,7 +78,7 @@
     <div class="nav-inner">
 
       <a href="#home" class="nav-logo" aria-label="Bridgeway Aero Tech">
-        <img class="nav-logo-mark" src="assets/images/logo-mark.png" alt="Bridgeway Aero Tech" aria-hidden="true">
+        <img class="nav-logo-mark" src="assets/images/logo-mark.png" alt="" aria-hidden="true">
         <div class="nav-wordmark">
           Bridgeway Aero Tech
           <span>Aviation expertise at every point of the asset journey</span>
@@ -86,13 +86,13 @@
       </a>
 
       <ul class="nav-links" role="list">
-        <li><a href="#about">About</a></li>
         <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
         <li><a href="#team">Our Team</a></li>
+        <li class="nav-insights-link" hidden><a href="#insights">Insights</a></li>
         <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#insights">Insights</a></li>
         <li><a href="#contact">Contact</a></li>
-        <li><a href="https://aeroai.ai" target="_blank" rel="noopener" class="nav-portal">Fleet Intelligence →</a></li>
+        <li><a href="https://aeroai.ai" target="_blank" rel="noopener" class="nav-portal">Fleet Intelligence ↗</a></li>
       </ul>
 
       <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
@@ -107,14 +107,14 @@
   <!-- Mobile menu -->
   <div class="nav-mobile" id="navMobile" role="navigation" aria-label="Mobile menu">
     <ul role="list">
-      <li><a href="#about" class="mobile-link">About</a></li>
       <li><a href="#services" class="mobile-link">Services</a></li>
+      <li><a href="#about" class="mobile-link">About</a></li>
       <li><a href="#team" class="mobile-link">Our Team</a></li>
+      <li class="nav-insights-link" hidden><a href="#insights" class="mobile-link">Insights</a></li>
       <li><a href="#gallery" class="mobile-link">Gallery</a></li>
-      <li><a href="#insights" class="mobile-link">Insights</a></li>
       <li><a href="#contact" class="mobile-link">Contact</a></li>
     </ul>
-    <a href="https://aeroai.ai" target="_blank" rel="noopener" class="nav-portal-mobile">Fleet Intelligence → aeroAI</a>
+    <a href="https://aeroai.ai" target="_blank" rel="noopener" class="nav-portal-mobile">Fleet Intelligence ↗</a>
   </div>
 </header>
 
@@ -153,18 +153,19 @@
     </div>
     <div class="hero-creds">
       <div class="cred">
-        <div class="cred-value">Global</div>
-        <div class="cred-label">FAA · EASA · CAAC</div>
+        <div class="cred-value" data-count-target="35" data-count-suffix="+">35+</div>
+        <div class="cred-label">Years in aviation</div>
       </div>
       <div class="cred">
-        <div class="cred-value">ISTAT</div>
-        <div class="cred-label">Member</div>
+        <div class="cred-value" data-count-target="500" data-count-suffix="+">500+</div>
+        <div class="cred-label">Pre-purchase inspections — engines &amp; airframes</div>
       </div>
       <div class="cred">
-        <div class="cred-value">aeroAI</div>
-        <div class="cred-label">Fleet Intelligence</div>
+        <div class="cred-value">$3.5B</div>
+        <div class="cred-label">In aircraft &amp; engine assets supported</div>
       </div>
     </div>
+    <p class="hero-creds-note">Principal experience &nbsp;·&nbsp; Firm established 2005 &nbsp;·&nbsp; ISTAT member</p>
   </div>
 
   <!-- Scroll-down indicator -->
@@ -206,6 +207,7 @@
       <a href="#contact" class="btn-primary reveal reveal-delay-1" style="align-self:flex-end;">Request a Consultation</a>
     </div>
 
+    <p class="services-group-label reveal">Advisory</p>
     <div class="services-grid">
       <div class="service-card reveal">
         <div class="service-card-header">
@@ -231,6 +233,10 @@
         <h3 class="service-name">Fleet Strategy Advisory</h3>
         <p class="service-desc">Independent fleet planning and strategy analysis for airlines, operators, and investors, covering acquisition, retirement, conversion, and lifecycle planning across aircraft and engine types.</p>
       </div>
+    </div>
+
+    <p class="services-group-label reveal">Hands-On Technical &amp; Asset Services</p>
+    <div class="services-grid">
       <div class="service-card reveal">
         <div class="service-card-header">
           <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
@@ -252,8 +258,8 @@
           <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
           <div class="service-num">06</div>
         </div>
-        <h3 class="service-name">Fleet Intelligence — aeroAI</h3>
-        <p class="service-desc">Clients access AI-assisted fleet monitoring and reporting through the aeroAI platform. Flight cycle tracking, maintenance scheduling support, and downloadable APEX reports — available through the client portal.</p>
+        <h3 class="service-name">Fleet Intelligence</h3>
+        <p class="service-desc">Our clients' intelligence hub, developed and operated by aeroAI. Its modules include Fleet Monitor — flight-cycle tracking, maintenance scheduling support, and fleet-status reporting — and Engine Valuation. Client access through the <a href="https://app.aeroai.ai" target="_blank" rel="noopener" class="service-desc-link">Fleet Monitor portal ↗</a>.</p>
       </div>
     </div>
   </div>
@@ -344,17 +350,13 @@
   <div class="team-grid">
 
     <article class="team-card reveal">
-      <!-- Drop headshot at assets/images/team/brian-dillion.jpg -->
-      <img src="assets/images/team/brian-dillion.jpg" alt="Brian R. Dillion — Founder and CEO" class="team-photo" loading="lazy">
+      <img src="assets/images/team/brian-dillion-2026.jpg" alt="Brian R. Dillion — Founder and CEO" class="team-photo" loading="lazy">
       <div class="team-info">
         <div class="team-name">Brian R. Dillion</div>
         <div class="team-role">Founder &amp; CEO</div>
         <div class="team-contact">
           <a href="mailto:BrianDillion@BridgewayAeroTech.com">BrianDillion@BridgewayAeroTech.com</a>
           <a href="tel:+14158198953">+1 415-819-8953</a>
-          <a href="#" target="_blank" rel="noopener" class="team-linkedin" aria-label="Brian Dillion on LinkedIn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-          </a>
         </div>
       </div>
     </article>
@@ -365,11 +367,8 @@
         <div class="team-name">Jerome Basile</div>
         <div class="team-role">VP Technical Operations</div>
         <div class="team-contact">
-          <a href="mailto:JeromeBasile@BridgewayAeroTech.com">JeromeBasile@BridgewayAeroTech.com</a>
+          <a href="mailto:jbasile@bridgewayaerotech.com">jbasile@bridgewayaerotech.com</a>
           <a href="tel:+19412128060">+1 941-212-8060</a>
-          <a href="#" target="_blank" rel="noopener" class="team-linkedin" aria-label="Jerome Basile on LinkedIn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-          </a>
         </div>
       </div>
     </article>
@@ -381,9 +380,6 @@
         <div class="team-role">Insights &amp; Marketing Consultant</div>
         <div class="team-contact">
           <a href="mailto:info@BridgewayAeroTech.com">info@BridgewayAeroTech.com</a>
-          <a href="#" target="_blank" rel="noopener" class="team-linkedin" aria-label="Shannon Poulsen on LinkedIn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-          </a>
         </div>
       </div>
     </article>
@@ -393,9 +389,10 @@
 
 
 <!-- ─────────────────────────────────────────
-     INSIGHTS
+     INSIGHTS — populated from assets/blog/posts.json by the
+     content pipeline; section stays hidden until posts exist
 ───────────────────────────────────────── -->
-<section class="insights" id="insights" aria-labelledby="insights-heading">
+<section class="insights" id="insights" aria-labelledby="insights-heading" hidden>
   <div class="insights-header">
     <div class="reveal">
       <p class="section-eyebrow">Insights</p>
@@ -403,73 +400,8 @@
         Aviation intelligence<br>from the field
       </h2>
     </div>
-    <a href="#" class="insights-link reveal reveal-delay-1">All Articles &nbsp;→</a>
   </div>
-
-  <!-- ── Featured Blog: Thoughts from Our Advisory ── -->
-  <div class="blog-featured reveal" id="blogFeatured">
-    <div class="blog-featured-inner">
-      <div class="blog-featured-img-wrap">
-        <img src="assets/images/insights/article-01.jpg" alt="" class="blog-featured-img" id="blogImg" loading="lazy">
-      </div>
-      <div class="blog-featured-body">
-        <div class="blog-featured-label">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-          Thoughts from Our Advisory
-        </div>
-        <p class="blog-featured-meta" id="blogMeta">Market Intelligence &nbsp;·&nbsp; March 14, 2026</p>
-        <h3 class="blog-featured-title" id="blogTitle">Narrowbody Demand Signals: What Lessors Are Watching in Q1</h3>
-        <p class="blog-featured-excerpt" id="blogExcerpt">With delivery backlogs extending into 2028, secondary market values for current-generation narrowbodies continue to firm. Here's what we're tracking across the transaction landscape and where we see the smartest capital being deployed.</p>
-        <div class="blog-featured-footer">
-          <div class="blog-featured-author">
-            <span class="blog-author-name" id="blogAuthor">Brian R. Dillion</span>
-            <span class="blog-author-role" id="blogAuthorRole">Founder &amp; CEO</span>
-          </div>
-          <div class="blog-featured-share">
-            <span class="blog-share-label">Also on</span>
-            <a href="#" class="blog-share-icon" id="blogLinkedIn" target="_blank" rel="noopener" aria-label="Read on LinkedIn">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-            </a>
-            <a href="#" class="blog-share-icon" target="_blank" rel="noopener" aria-label="Share on X">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-            </a>
-            <a href="#" class="blog-share-icon" id="blogInstagram" target="_blank" rel="noopener" aria-label="View on Instagram">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor" stroke="none"/></svg>
-            </a>
-          </div>
-        </div>
-        <a href="#" class="insight-read blog-read-link" id="blogReadLink">Read This Week's Post &nbsp;→</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- ── News Articles ── -->
-  <div class="insights-grid" id="insightsGrid">
-    <article class="insight-card reveal">
-      <div class="insight-card-body">
-        <p class="insight-meta">MRO &amp; Maintenance &nbsp;·&nbsp; Coming Soon</p>
-        <h3 class="insight-title">Industry insights launching soon</h3>
-        <p class="insight-excerpt">Expert analysis on aircraft maintenance, airworthiness directives, technical operations, and asset management — curated by aviation professionals with decades of hands-on experience.</p>
-        <a href="#" class="insight-read">Stay Tuned &nbsp;→</a>
-      </div>
-    </article>
-    <article class="insight-card reveal reveal-delay-1">
-      <div class="insight-card-body">
-        <p class="insight-meta">Transaction Advisory &nbsp;·&nbsp; Coming Soon</p>
-        <h3 class="insight-title">Market intelligence from the field</h3>
-        <p class="insight-excerpt">Fleet transactions, leasing deals, market analysis, and acquisition strategy — data-driven perspectives from operators who have been on both sides of the table.</p>
-        <a href="#" class="insight-read">Stay Tuned &nbsp;→</a>
-      </div>
-    </article>
-    <article class="insight-card reveal reveal-delay-2">
-      <div class="insight-card-body">
-        <p class="insight-meta">Operations &amp; Finance &nbsp;·&nbsp; Coming Soon</p>
-        <h3 class="insight-title">Operational intelligence for decision makers</h3>
-        <p class="insight-excerpt">Route economics, fleet utilization, regulatory compliance, and financial analysis — the operational lens that investors, lessors, and C-suite executives need.</p>
-        <a href="#" class="insight-read">Stay Tuned &nbsp;→</a>
-      </div>
-    </article>
-  </div>
+  <div class="insights-grid" id="insightsGrid"></div>
 </section>
 
 
@@ -530,16 +462,16 @@
         <div>
           <p class="contact-item-label">Jerome Basile — VP Technical Operations</p>
           <p class="contact-item-value">
-            <a href="mailto:JeromeBasile@BridgewayAeroTech.com">JeromeBasile@BridgewayAeroTech.com</a><br>
+            <a href="mailto:jbasile@bridgewayaerotech.com">jbasile@bridgewayaerotech.com</a><br>
             <a href="tel:+19412128060">+1 941-212-8060</a>
           </p>
         </div>
         <div>
-          <p class="contact-item-label">Fleet Intelligence — aeroAI</p>
+          <p class="contact-item-label">aeroAI Fleet Intelligence</p>
           <p class="contact-item-value">
             <a href="https://aeroai.ai" target="_blank" rel="noopener" style="color:var(--blue);">aeroai.ai ↗</a>
             &nbsp;&nbsp;
-            <a href="https://app.aeroai.ai" target="_blank" rel="noopener" style="color:var(--blue);">Fleet Monitor ↗</a>
+            <a href="https://app.aeroai.ai" target="_blank" rel="noopener" style="color:var(--blue);">Client portal — Fleet Monitor ↗</a>
           </p>
         </div>
       </div>
@@ -603,7 +535,7 @@
         </div>
 
         <button type="submit" class="form-submit">Send Message</button>
-        <p class="form-note">Your message will be sent to info@bridgewayaerotech.com. We typically respond within one business day.</p>
+        <p class="form-note">Your message goes to info@bridgewayaerotech.com. We typically respond within one business day.</p>
 
       </form>
 
@@ -629,26 +561,17 @@
       <img src="assets/images/logo-full.png" alt="Bridgeway Aero Tech" class="footer-logo" aria-hidden="true">
       <div class="footer-brand-sub">Aviation expertise at every point of the asset journey</div>
       <p class="footer-tagline">
-        Independent, technically rigorous aviation advisory and asset management services that protect capital, reduce transactional risk, and maximize the value of aviation assets throughout their lifecycle.
+        Independent aviation advisory and asset management — protecting capital and reducing transactional risk since 2005.
       </p>
       <div class="footer-portals">
         <a href="https://aeroai.ai" target="_blank" rel="noopener" class="footer-portal">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          aeroAI
+          aeroAI Fleet Intelligence
         </a>
         <a href="https://app.aeroai.ai" target="_blank" rel="noopener" class="footer-portal">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          Fleet Monitor
+          Client Portal — Fleet Monitor
         </a>
-      </div>
-
-      <!-- Newsletter signup -->
-      <div class="footer-newsletter">
-        <div class="footer-newsletter-title">Market Insights</div>
-        <form class="footer-newsletter-form" aria-label="Newsletter signup">
-          <input type="email" class="footer-newsletter-input" placeholder="Email address" aria-label="Email for newsletter" required>
-          <button type="submit" class="footer-newsletter-btn">Subscribe</button>
-        </form>
       </div>
     </div>
 
@@ -668,7 +591,7 @@
       <ul class="footer-col-links" role="list">
         <li><a href="#about">About Us</a></li>
         <li><a href="#team">Our Team</a></li>
-        <li><a href="#insights">Insights</a></li>
+        <li><a href="#gallery">Gallery</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
@@ -695,9 +618,6 @@
     <a href="https://www.instagram.com/bridgewayaerotech" target="_blank" rel="noopener" aria-label="Instagram">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor" stroke="none"/></svg>
     </a>
-    <a href="#" target="_blank" rel="noopener" aria-label="YouTube">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.43z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor" stroke="none"/></svg>
-    </a>
     <a href="https://wa.me/14154486590" target="_blank" rel="noopener" aria-label="WhatsApp">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2a10 10 0 00-8.675 14.95L2 22l5.233-1.276A10 10 0 1012 2z"/></svg>
     </a>
@@ -707,12 +627,11 @@
   </div>
 
   <div class="footer-bottom container" style="padding-left:var(--gutter);padding-right:var(--gutter);">
-    <p class="footer-legal">&copy; <span class="footer-year">2025</span> Bridgeway Aero Tech. All rights reserved. &nbsp;·&nbsp; TrustedSite Certified</p>
+    <p class="footer-legal">&copy; <span class="footer-year">2026</span> Bridgeway Aero Tech. All rights reserved.</p>
     <ul class="footer-legal-links" role="list">
-      <li><a href="#">Privacy Policy</a></li>
-      <li><a href="#">Terms of Service</a></li>
+      <li><a href="privacy.html">Privacy Policy</a></li>
     </ul>
-    <p class="footer-address">Dublin, OH &nbsp;·&nbsp; TrustedSite Certified</p>
+    <p class="footer-address">Dublin, OH</p>
   </div>
 </footer>
 
@@ -723,7 +642,7 @@
     <p class="cookie-text">This website uses essential cookies to ensure proper functionality. We do not use tracking or advertising cookies. By continuing to use this site, you consent to our use of essential cookies.</p>
     <div class="cookie-actions">
       <button id="cookieAccept" class="cookie-accept">Accept</button>
-      <a href="#" id="cookiePrivacy" class="cookie-privacy">Privacy Policy</a>
+      <a href="privacy.html" id="cookiePrivacy" class="cookie-privacy">Privacy Policy</a>
     </div>
   </div>
 </div>
