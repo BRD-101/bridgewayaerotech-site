@@ -943,6 +943,15 @@ a { text-decoration: none; color: inherit; }
   letter-spacing: .04em;
 }
 
+.team-bio {
+  font-family: var(--body);
+  font-size: .78rem;
+  font-weight: 300;
+  line-height: 1.65;
+  color: rgba(255,255,255,.55);
+  margin-top: .9rem;
+}
+
 .team-contact {
   margin-top: .85rem;
   padding-top: .85rem;
