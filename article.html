@@ -61,6 +61,15 @@
     color: var(--muted);
     margin: -1rem 0 1.6rem;
   }
+  .article-subhead {
+    font-family: var(--cond);
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: .02em;
+    color: var(--charcoal);
+    margin: 2rem 0 .9rem;
+    max-width: 68ch;
+  }
   .article-body p {
     font-size: 1rem;
     font-weight: 300;
@@ -124,6 +133,60 @@
       ? 'The Bridgeway Position' + (TONE_LABELS[post.tone] ? '  ·  ' + TONE_LABELS[post.tone] : '') + '  ·  ' + dateStr
       : (SECTIONS[post.section] || 'Aviation') + '  ·  ' + dateStr;
 
+  // Drafted bodies come from the content pipeline as Markdown: ATX headings
+  // and **bold**. Rendered as DOM nodes rather than innerHTML so article text
+  // can never inject markup. Anything unrecognised falls through as plain text.
+  function inlineMarkdown(text, el) {
+    var re = /(\*\*|__)(.+?)\1|(\*|_)(.+?)\3/g;
+    var last = 0, m;
+    while ((m = re.exec(text)) !== null) {
+      if (m.index > last) el.appendChild(document.createTextNode(text.slice(last, m.index)));
+      var bold = m[2] !== undefined;
+      var node = document.createElement(bold ? 'strong' : 'em');
+      node.textContent = bold ? m[2] : m[4];
+      el.appendChild(node);
+      last = re.lastIndex;
+    }
+    if (last < text.length) el.appendChild(document.createTextNode(text.slice(last)));
+  }
+
+  function renderBody(text, container) {
+    var lines = String(text || '').split(/\n/);
+    var para = [];
+    function flush() {
+      if (!para.length) return;
+      var p = document.createElement('p');
+      inlineMarkdown(para.join(' ').trim(), p);
+      container.appendChild(p);
+      para = [];
+    }
+    lines.forEach(function(line) {
+      var t = line.trim();
+      if (!t) { flush(); return; }
+      var h = /^(#{1,6})\s+(.*)$/.exec(t);
+      if (h) {
+        flush();
+        var el = document.createElement('h2');
+        el.className = 'article-subhead';
+        inlineMarkdown(h[2].trim(), el);
+        container.appendChild(el);
+        return;
+      }
+      // A standalone **bolded** line is a subhead in these drafts, not a paragraph.
+      var b = /^\*\*(.+)\*\*$/.exec(t);
+      if (b) {
+        flush();
+        var el2 = document.createElement('h2');
+        el2.className = 'article-subhead';
+        el2.textContent = b[1].trim();
+        container.appendChild(el2);
+        return;
+      }
+      para.push(t);
+    });
+    flush();
+  }
+
     var h1 = document.createElement('h1');
     h1.className = 'article-headline';
     h1.textContent = post.headline || '';
@@ -133,12 +196,7 @@
 
     var body = document.createElement('div');
     body.className = 'article-body';
-    String(post.body || '').split(/\n\s*\n/).forEach(function(par) {
-      if (!par.trim()) return;
-      var p = document.createElement('p');
-      p.textContent = par.trim();
-      body.appendChild(p);
-    });
+    renderBody(post.body, body);
 
     root.appendChild(meta);
     root.appendChild(h1);
