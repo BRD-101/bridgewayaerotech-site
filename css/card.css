@@ -1,0 +1,160 @@
+/* Digital business card — bridgewayaerotech.com/card/<slug>
+   Loaded after css/styles.css, so it inherits the site's tokens and fonts.
+   Sized for a phone first: this page is almost always opened from a QR code
+   or a link in a signature, not from a desktop. */
+
+.card-page {
+  min-height: 100vh;
+  background: var(--off-white);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0 0 3rem;
+}
+
+.card-shell {
+  width: 100%;
+  max-width: 440px;
+  background: var(--white);
+  box-shadow: 0 1px 3px rgba(30, 39, 48, .07), 0 12px 40px rgba(30, 39, 48, .07);
+}
+
+.card-head {
+  background: var(--charcoal);
+  padding: 3rem 1.75rem 2rem;
+  text-align: center;
+}
+
+.card-photo {
+  width: 132px;
+  height: 132px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  border: 3px solid rgba(255, 255, 255, .14);
+  display: block;
+  margin: 0 auto 1.3rem;
+}
+
+.card-name {
+  font-family: var(--cond);
+  font-size: 1.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  line-height: 1.15;
+  color: var(--white);
+}
+
+.card-title {
+  font-family: var(--body);
+  font-size: .82rem;
+  font-weight: 300;
+  letter-spacing: .04em;
+  color: var(--blue-lt);
+  margin-top: .45rem;
+}
+
+/* Call / Email: the two things someone scanning a card actually wants. */
+.card-actions {
+  display: flex;
+  background: var(--charcoal-2);
+  border-top: 1px solid rgba(255, 255, 255, .07);
+}
+
+.card-action {
+  flex: 1;
+  padding: 1.05rem .5rem;
+  text-align: center;
+  font-family: var(--cond);
+  font-size: .74rem;
+  font-weight: 600;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--white);
+  transition: background .18s;
+}
+
+.card-action + .card-action { border-left: 1px solid rgba(255, 255, 255, .07); }
+.card-action:hover { background: #33404e; }
+
+.card-rows { padding: .5rem 1.75rem; }
+
+.card-row { border-bottom: 1px solid var(--rule); }
+.card-row:last-child { border-bottom: 0; }
+.card-row-body { padding: 1.05rem 0; }
+
+.card-row-value {
+  display: block;
+  font-family: var(--body);
+  font-size: .95rem;
+  font-weight: 400;
+  color: var(--charcoal);
+  word-break: break-word;
+}
+
+a.card-row-value { color: var(--blue); }
+a.card-row-value:hover { text-decoration: underline; }
+
+.card-row-label {
+  font-family: var(--cond);
+  font-size: .64rem;
+  font-weight: 500;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: .25rem;
+}
+
+.card-foot {
+  padding: 1.5rem 1.75rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: .7rem;
+}
+
+.card-btn {
+  width: 100%;
+  padding: 1rem;
+  font-family: var(--cond);
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: 1.5px solid var(--blue);
+  transition: background .18s, color .18s;
+}
+
+.card-btn-primary { background: var(--blue); color: var(--white); }
+.card-btn-primary:hover { background: #094b86; border-color: #094b86; }
+
+.card-btn-ghost { background: transparent; color: var(--blue); }
+.card-btn-ghost:hover { background: var(--blue-dim); }
+
+.card-back {
+  display: block;
+  text-align: center;
+  padding: 1.75rem 1rem 0;
+  font-family: var(--cond);
+  font-size: .7rem;
+  font-weight: 600;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.card-back:hover { color: var(--blue); }
+
+.card-missing {
+  padding: 4rem 1.75rem;
+  text-align: center;
+  font-family: var(--body);
+  font-weight: 300;
+  color: var(--muted);
+}
+
+@media (min-width: 560px) {
+  .card-page { padding-top: 3rem; }
+  .card-shell { border-radius: 2px; }
+}
