@@ -969,6 +969,19 @@ a { text-decoration: none; color: inherit; }
 
 .team-contact a:hover { color: rgba(255,255,255,.75); }
 
+.team-card-link {
+  font-family: var(--cond);
+  font-size: .66rem;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--blue-lt);
+  margin-top: .35rem;
+  transition: color .2s;
+}
+
+.team-card-link:hover { color: var(--white); }
+
 .team-linkedin {
   color: rgba(255,255,255,.3);
   transition: color .2s;
